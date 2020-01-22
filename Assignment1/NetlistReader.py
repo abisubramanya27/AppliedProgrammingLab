@@ -11,11 +11,11 @@ def NetListReader(filePath):
 			fullList = [s.strip() for s in fullList]
 			#Checking if '.circuit' and '.end' is there in the Netlist
 			if('.circuit' not in fullList or '.end' not in fullList) :
-				print('Not a valid Netlist')
+				print('Invalid Circuit Definition - No .circuit and/or .end found')
 				sys.exit()
 	#File Handling Errors
 	except (IOError,OSError):
-		print('Unable to Find/Open File')
+		print(f'Unable to Find/Open {filePath}')
 		sys.exit()
 
 	#Resultant Net List we need
@@ -26,13 +26,13 @@ def NetListReader(filePath):
 		if sentence == '.circuit':
 			#Checking that previous '.circuit' ended with a '.end' before starting another
 			if l != -1:
-				print('Invalid NetList File Format')
+				print('Invalid Circuit Definition - .circuit already there')
 				sys.exit()
 			l = i
 		elif sentence == '.end':
 			#Checking there was a '.circuit' corresponding to the present '.end'
 			if l == -1:
-				print('Invalid NetList File Format')
+				print('Invalid Circuit Definition - No matching .circuit')
 				sys.exit()
 			l = -1
 		else:
@@ -41,7 +41,7 @@ def NetListReader(filePath):
 
 	#Checking for no Orphaned '.circuit'
 	if l != -1:
-		print('Invalid NetList File Format')
+		print('Invalid Circuit Definition - No matching .end')
 		sys.exit()
 
 	#Removing the comments as we are not going to process them
@@ -60,7 +60,7 @@ def NetListReader(filePath):
 #Main Function
 if __name__ == '__main__':
 	if(len(sys.argv) != 2) :
-		print('Check the Arguments passed to the Program!!')
+		print('\nUsage: %s <inputfile>' % sys.argv[0])
 		sys.exit()
 
 	filePath = sys.argv[1]
