@@ -1,0 +1,12 @@
+This is a sample Netlist created for checking my Program
+****** Created on 22nd Jan 2020 *******
+****** By Abishek *******
+.circuit
+R... n1 n2 value
+E... n1 n2 n3 n4 value
+.end
+******** Another list *******
+.circuit
+R1 1 2 50 # comment # comment2
+L1 2 3 25
+.end
