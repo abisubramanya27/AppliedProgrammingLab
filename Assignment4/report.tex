@@ -246,11 +246,9 @@ a_0 \\ a_1 \\ b_1 \\ ... \\ a_{25} \\ b_{25}
 f(x_1) \\ f(x_2) \\ ... \\ f(x_{400})
 \end{pmatrix}
 \end{equation}
-Notice that  I have specified the endpoint of periodic extension of exp(x) alone as midpoint of the left
-and right limit values. This is done since the fourier series converges to the midpoint of left hand and 
-right hand limits at points of discontinuities. 
+Notice that here I have specified the endpoint ($2\pi$) of periodic extension of exp(x) as the left limit value. This is done since the fourier series converges to the midpoint of left hand and right hand limits at points of discontinuities. According to the function we defined, the value at $2\pi$ would be that at $0$ (periodic extension), but if we use the same, the Least square approach would estimate the function would reach zero from point before the $2\pi$ point in the sample, and since the sampling rate is low, the prediction would be quite bad. Only if we give value at endpoint like we defined, the function would be nearly discontinuous, and it would converge to the midpoint like what Fourier Series does.
 \\
-So to make sure coefficients predicted by least square approach match with that by integration, I have done the same.
+In short, to make sure coefficients predicted by least square approach match with that by integration, I have done the same.
 \begin{minted}[tabsize = 4]{python3}
 x=pl.linspace(0,2*np.pi,400,endpoint = True)
 b1=f1(x) 
@@ -383,9 +381,9 @@ The output is :
    	\label{fig:out}
    	\caption{Outputting Maximum Deviation}
 \end{figure}
-{We note that there is very good agreement in values in the case of $cos(cos(x))$ but a significant amount of deviation in the case of $e^{x}$. The reason for this is that the periodic extension of the exponential function is discontinuous, and hence would require a lot more higher order harmonics to accurately determine its Fourier coefficients.
+{We note that there is very good agreement in values in the case of $cos(cos(x))$ but a significant amount of deviation in the case of $e^{x}$. The reason for this is that the periodic extension of the exponential function is discontinuous, and hence would require a lot more higher order harmonics to accurately determine its Fourier coefficients. Also , we need more samples for Least square method to describe the discontinuous function more accurately.
 \\
-As we increase the number of harmonics the maximum deviation would reduce, but wouldn't reduce as significantly, and hence won't vanish.
+As we increase the number of harmonics and/or the number of samples the maximum deviation would reduce, but wouldn't reduce as significantly, and hence won't vanish.
 This effect can be attributed to the \textbf{Gibbs Phenomenon}.
 }
 \subsection{Part 7}

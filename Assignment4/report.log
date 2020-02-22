@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.21)  22 FEB 2020 14:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.21)  22 FEB 2020 14:36
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -607,34 +607,34 @@ F55.pygtex [8])
 <loglog1p.png, id=54, 462.528pt x 346.896pt>
 File: loglog1p.png Graphic file (type png)
 <use loglog1p.png>
-Package pdftex.def Info: loglog1p.png  used on input line 312.
+Package pdftex.def Info: loglog1p.png  used on input line 310.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 <semilog1p.png, id=55, 462.528pt x 346.896pt>
 File: semilog1p.png Graphic file (type png)
 <use semilog1p.png>
-Package pdftex.def Info: semilog1p.png  used on input line 318.
+Package pdftex.def Info: semilog1p.png  used on input line 316.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [9]
 <loglog2p.png, id=59, 462.528pt x 346.896pt>
 File: loglog2p.png Graphic file (type png)
 <use loglog2p.png>
-Package pdftex.def Info: loglog2p.png  used on input line 324.
+Package pdftex.def Info: loglog2p.png  used on input line 322.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 <semilog2p.png, id=60, 462.528pt x 346.896pt>
 File: semilog2p.png Graphic file (type png)
 <use semilog2p.png>
-Package pdftex.def Info: semilog2p.png  used on input line 330.
+Package pdftex.def Info: semilog2p.png  used on input line 328.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [10 <./loglog1p.png> <./semilog1p.png>]
 <loglog1e.png, id=66, 462.528pt x 346.896pt>
 File: loglog1e.png Graphic file (type png)
 <use loglog1e.png>
-Package pdftex.def Info: loglog1e.png  used on input line 338.
+Package pdftex.def Info: loglog1e.png  used on input line 336.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 <semilog1e.png, id=67, 462.528pt x 346.896pt>
 File: semilog1e.png Graphic file (type png)
 <use semilog1e.png>
-Package pdftex.def Info: semilog1e.png  used on input line 344.
+Package pdftex.def Info: semilog1e.png  used on input line 342.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [11 <./loglog2p.png> <./semilog2p.png>]
 \openout3 = `report.pyg'.
@@ -645,10 +645,10 @@ F55.pygtex [12 <./loglog1e.png> <./semilog1e.png>])
 <out.png, id=78, 807.015pt x 134.5025pt>
 File: out.png Graphic file (type png)
 <use out.png>
-Package pdftex.def Info: out.png  used on input line 382.
+Package pdftex.def Info: out.png  used on input line 380.
 (pdftex.def)             Requested size: 403.50652pt x 67.25107pt.
 
-Overfull \hbox (43.50652pt too wide) in paragraph at lines 382--384
+Overfull \hbox (43.50652pt too wide) in paragraph at lines 380--382
  [][] 
  []
 
@@ -660,12 +660,12 @@ F55.pygtex [13 <./out.png>])
 <expf.png, id=85, 462.528pt x 346.896pt>
 File: expf.png Graphic file (type png)
 <use expf.png>
-Package pdftex.def Info: expf.png  used on input line 433.
+Package pdftex.def Info: expf.png  used on input line 431.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 <cosf.png, id=86, 462.528pt x 346.896pt>
 File: cosf.png Graphic file (type png)
 <use cosf.png>
-Package pdftex.def Info: cosf.png  used on input line 440.
+Package pdftex.def Info: cosf.png  used on input line 438.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [14] [15 <./expf.png> <./cosf.png>] (./report.aux)
 runsystem(rm report.pyg)...executed.
@@ -674,7 +674,7 @@ runsystem(rm report.pyg)...executed.
 Here is how much of TeX's memory you used:
  7754 strings out of 493610
  129553 string characters out of 6159293
- 238141 words of memory out of 5000000
+ 238383 words of memory out of 5000000
  11757 multiletter control sequences out of 15000+600000
  10386 words of font info for 38 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -694,7 +694,7 @@ live/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
 local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (15 pages, 1068694 bytes).
+Output written on report.pdf (15 pages, 1069356 bytes).
 PDF statistics:
  141 PDF objects out of 1000 (max. 8388607)
  79 compressed objects within 1 object stream
