@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{g}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{A} \PYG{o}{=} \PYG{l+m+mf}{1.05}\PYG{p}{,}\PYG{n}{B} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.105}\PYG{p}{):}
+	\PYG{k}{return} \PYG{n}{A}\PYG{o}{*}\PYG{p}{(}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{jn}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{t}\PYG{p}{))} \PYG{o}{+} \PYG{n}{B}\PYG{o}{*}\PYG{n}{t}
+
+\PYG{n}{data} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{loadtxt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}./fitting.dat\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[:,}\PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{n}{Y} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[:,}\PYG{l+m+mi}{1}\PYG{p}{:]}
+\PYG{n}{true\PYGZus{}y}  \PYG{o}{=} \PYG{n}{g}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{pylab} \PYG{k}{as} \PYG{n+nn}{pl}
+\PYG{k+kn}{import} \PYG{n+nn}{scipy}\PYG{n+nn}{.}\PYG{n+nn}{special} \PYG{k}{as} \PYG{n+nn}{sp}
+\PYG{k+kn}{import} \PYG{n+nn}{sys}
+\end{Verbatim}

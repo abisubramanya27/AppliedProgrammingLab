@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{fig} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Log Error vs Log Noise\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{(}\PYG{n}{sigma}\PYG{p}{,}\PYG{n}{mse\PYGZus{}list}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Log of Mean Squared Error\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{(}\PYG{n}{sigma}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{pred\PYGZus{}A}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.05}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}log|Ao\PYGZhy{}Ap|\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{(}\PYG{n}{sigma}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{pred\PYGZus{}B}\PYG{o}{+}\PYG{l+m+mf}{0.105}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}go\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}log|Bo\PYGZhy{}Bp|\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}Noise sigma\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

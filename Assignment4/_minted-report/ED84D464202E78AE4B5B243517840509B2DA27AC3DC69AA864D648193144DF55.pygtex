@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Loglog Fourier coefficients of exp(x)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{51}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]),}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}exp(x)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}log n \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}log of Magnitude of coefficient \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Semilogy Fourier coefficients of exp(x)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{51}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]),}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}exp(x)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}n \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}log of Magnitude of coefficient \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Loglog Fourier coefficients of cos(cos(x))\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{51}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]),}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}cos(cos(x))\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}log n \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}log of Magnitude of coefficient \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Semilogy Fourier coefficients of cos(cos(x))\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{51}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]),}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}cos(cos(x))\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}n \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}log of Magnitude of coefficient \PYGZdl{}\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

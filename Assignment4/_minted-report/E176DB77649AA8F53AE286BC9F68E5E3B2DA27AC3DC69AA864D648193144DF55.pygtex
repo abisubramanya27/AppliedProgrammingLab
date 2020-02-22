@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{e1} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{c1}\PYG{p}{)}
+\PYG{n}{e2} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{c2}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}The maximum deviation for exp(x) function :\PYGZdq{}}\PYG{p}{,}\PYG{n}{np}\PYG{o}{.}\PYG{n}{amax}\PYG{p}{(}\PYG{n}{e1}\PYG{p}{))}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The coefficients with largest deviation is/are :\PYGZsq{}}\PYG{p}{)}
+
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{np}\PYG{o}{.}\PYG{n}{argwhere}\PYG{p}{(}\PYG{n}{e1} \PYG{o}{==} \PYG{n}{np}\PYG{o}{.}\PYG{n}{amax}\PYG{p}{(}\PYG{n}{e1}\PYG{p}{))} \PYG{p}{:} \PYG{c+c1}{\PYGZsh{}Returning all maximum deviations}
+	\PYG{n}{coef} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+	\PYG{k}{if} \PYG{n}{i} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+		\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}A0\PYGZsq{}}\PYG{p}{)}
+		\PYG{k}{continue}
+	\PYG{n}{coef} \PYG{o}{+=} \PYG{n+nb}{chr}\PYG{p}{(}\PYG{l+m+mi}{65} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{2}\PYG{p}{))}
+	\PYG{n}{coef} \PYG{o}{+=} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{((}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{coef}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}The maximum deviation for cos(cos(x)) function :\PYGZdq{}}\PYG{p}{,}\PYG{n}{np}\PYG{o}{.}\PYG{n}{amax}\PYG{p}{(}\PYG{n}{e2}\PYG{p}{))}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The coefficients with largest deviation is/are :\PYGZsq{}}\PYG{p}{)}
+
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{np}\PYG{o}{.}\PYG{n}{argwhere}\PYG{p}{(}\PYG{n}{e1} \PYG{o}{==} \PYG{n}{np}\PYG{o}{.}\PYG{n}{amax}\PYG{p}{(}\PYG{n}{e1}\PYG{p}{))} \PYG{p}{:} \PYG{c+c1}{\PYGZsh{}Returning all maximum deviations}
+	\PYG{n}{coef} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+	\PYG{k}{if} \PYG{n}{i} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+		\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}A0\PYGZsq{}}\PYG{p}{)}
+		\PYG{k}{continue}
+	\PYG{n}{coef} \PYG{o}{+=} \PYG{n+nb}{chr}\PYG{p}{(}\PYG{l+m+mi}{65} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{2}\PYG{p}{))}
+	\PYG{n}{coef} \PYG{o}{+=} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{((}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{coef}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{mse\PYGZus{}list} \PYG{o}{=} \PYG{p}{[]}
+\PYG{n}{pred\PYGZus{}A} \PYG{o}{=} \PYG{p}{[]}
+\PYG{n}{pred\PYGZus{}B} \PYG{o}{=} \PYG{p}{[]}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{Y}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]):}
+	\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{),(}\PYG{n}{mse}\PYG{p}{),}\PYG{o}{*}\PYG{n}{\PYGZus{}} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{lstsq}\PYG{p}{(}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{c\PYGZus{}}\PYG{p}{[}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{jn}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{t}\PYG{p}{),}\PYG{n}{t}\PYG{p}{],}\PYG{n}{Y}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{],}\PYG{n}{rcond} \PYG{o}{=} \PYG{k+kc}{None}\PYG{p}{)}
+	\PYG{n}{mse\PYGZus{}list}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{mse}\PYG{p}{)}
+	\PYG{n}{pred\PYGZus{}A}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}
+	\PYG{n}{pred\PYGZus{}B}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}
+
+\PYG{n}{pred\PYGZus{}A} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{pred\PYGZus{}A}\PYG{p}{)}
+\PYG{n}{pred\PYGZus{}B} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{pred\PYGZus{}B}\PYG{p}{)}
+
+\PYG{n}{fig} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Error vs Noise\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{sigma}\PYG{p}{,}\PYG{n}{mse\PYGZus{}list}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Mean Squared Error\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{sigma}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{pred\PYGZus{}A}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.05}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}|Ao\PYGZhy{}Ap|\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{sigma}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{absolute}\PYG{p}{(}\PYG{n}{pred\PYGZus{}B}\PYG{o}{+}\PYG{l+m+mf}{0.105}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}go\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}|Bo\PYGZhy{}Bp|\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}Noise sigma\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

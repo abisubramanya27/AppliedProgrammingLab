@@ -1,0 +1,8 @@
+.circuit
+R1 N002 N001 2
+R2 GND N002 3
+R3 N002 N003 5
+RL N003 GND 1
+V1 N001 GND ac 10 30
+.end
+.ac 50
