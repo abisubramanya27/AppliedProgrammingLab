@@ -240,7 +240,7 @@ for i in np.argwhere(e1 == np.amax(e1)) : #Returning all maximum deviations
 	print(coef)
 
 ################################################################
-#Part7 - Finding largest deviation between true and predicted coefficients
+#Part7 - Evaluating function from Ac, where c is computed by Least Square method
 
 Acexp = np.matmul(A,c1)
 Accos = np.matmul(A,c2)

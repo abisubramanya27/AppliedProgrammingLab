@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{parser} \PYG{o}{=} \PYG{n}{argparse}\PYG{o}{.}\PYG{n}{ArgumentParser}\PYG{p}{(}\PYG{n}{description}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Defining Parameters\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}Nx\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Nx\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{int}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mi}{25}\PYG{p}{,}\PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Size along x\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}Ny\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Ny\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{int}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mi}{25}\PYG{p}{,}\PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Size along y\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}r\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}radius\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{int}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mi}{8}\PYG{p}{,}
+								\PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Radius of central lead\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}Ni\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Niter\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{int}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mi}{1500}\PYG{p}{,}
+								\PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Number of interations to perform\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{args} \PYG{o}{=} \PYG{n}{parser}\PYG{o}{.}\PYG{n}{parse\PYGZus{}args}\PYG{p}{()}
+\PYG{n}{Nx}\PYG{p}{,}\PYG{n}{Ny}\PYG{p}{,}\PYG{n}{Niter}\PYG{p}{,}\PYG{n}{radius} \PYG{o}{=} \PYG{n}{args}\PYG{o}{.}\PYG{n}{Nx}\PYG{p}{,}\PYG{n}{args}\PYG{o}{.}\PYG{n}{Ny}\PYG{p}{,}\PYG{n}{args}\PYG{o}{.}\PYG{n}{Niter}\PYG{p}{,}\PYG{n}{args}\PYG{o}{.}\PYG{n}{radius}
+\end{Verbatim}

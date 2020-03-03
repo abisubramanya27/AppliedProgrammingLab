@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Temp} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{Ny}\PYG{p}{,}\PYG{n}{Nx}\PYG{p}{))}\PYG{o}{*}\PYG{l+m+mi}{300}
+\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{Niter}\PYG{p}{):}
+	\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.25}\PYG{o}{*}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{o}{+}\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{:]}\PYG{o}{+}
+		\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{+}\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{+}\PYG{p}{(}\PYG{n}{Jx}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{+}\PYG{p}{(}\PYG{n}{Jy}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{))}
+	\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,:]} \PYG{o}{=} \PYG{l+m+mi}{300}
+	\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}
+	\PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Temp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+	\PYG{n}{Temp}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,:]} \PYG{o}{=} \PYG{n}{Temp}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,:]}
+	\PYG{n}{Temp}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{300}
+	
+\PYG{c+c1}{\PYGZsh{}Contour plot of the Temperature}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{9}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}X\PYGZhy{}axis\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Y\PYGZhy{}axis\PYGZdq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{contourf}\PYG{p}{,}\PYG{n}{Temp}\PYG{p}{,}
+	\PYG{l+s+s2}{\PYGZdq{}Contour Plot of Temperature\PYGZdq{}}\PYG{p}{,}\PYG{n}{cmap} \PYG{o}{=} \PYG{n}{matplotlib}\PYG{o}{.}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{hot}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

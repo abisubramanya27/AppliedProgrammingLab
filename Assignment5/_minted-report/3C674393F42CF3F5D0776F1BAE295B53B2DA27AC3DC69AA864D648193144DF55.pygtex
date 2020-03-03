@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ii} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{where}\PYG{p}{(}\PYG{n}{X}\PYG{o}{*}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y}\PYG{o}{*}\PYG{n}{Y} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mf}{0.35}\PYG{o}{*}\PYG{l+m+mf}{0.35}\PYG{p}{)}
+\PYG{n}{Phi}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}
+
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}X\PYGZhy{}axis\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Y\PYGZhy{}axis\PYGZdq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{contourf}\PYG{p}{,}\PYG{n}{Phi}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Contour Plot of Potential\PYGZdq{}}\PYG{p}{,}
+		\PYG{k+kc}{True}\PYG{p}{,}\PYG{n}{matplotlib}\PYG{o}{.}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{hot}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{X}\PYG{p}{[}\PYG{n}{X}\PYG{o}{*}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y}\PYG{o}{*}\PYG{n}{Y} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.35}\PYG{o}{*}\PYG{l+m+mf}{0.35}\PYG{p}{],}\PYG{n}{Y}\PYG{p}{[}\PYG{n}{X}\PYG{o}{*}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y}\PYG{o}{*}\PYG{n}{Y} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.35}\PYG{o}{*}\PYG{l+m+mf}{0.35}\PYG{p}{],}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}
+		\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Points with potential 1V\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}Semilog Plot}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{errors}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Iteration Number\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Log of Error\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{fn} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{,}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Semilogy Plot of Error vs Iteration Number\PYGZsq{}}\PYG{p}{,}
+	\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Line\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{30}\PYG{p}{),}\PYG{n}{errors}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{Niter}\PYG{p}{:}\PYG{l+m+mi}{30}\PYG{p}{],}\PYG{l+s+s1}{\PYGZsq{}yo\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Points\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}Loglog plot}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{errors}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Log of Iteration Number\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Log of Error\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{fn} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{,}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Loglog Plot of Error vs Iteration Number\PYGZsq{}}\PYG{p}{,}
+	\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Line\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{30}\PYG{p}{),}\PYG{n}{errors}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{Niter}\PYG{p}{:}\PYG{l+m+mi}{30}\PYG{p}{],}\PYG{l+s+s1}{\PYGZsq{}yo\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Points\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}Semilog plot after 500 iterations}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{errors}\PYG{p}{[}\PYG{l+m+mi}{499}\PYG{p}{:],}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Iteration Number\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Log of Error\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{fn} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{,}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Semilogy Plot of Error vs Iteration Number}
+	\PYG{n}{after} \PYG{l+m+mi}{500} \PYG{n}{iterations}\PYG{l+s+s1}{\PYGZsq{},label = \PYGZsq{}}\PYG{n}{Line}\PYG{l+s+s1}{\PYGZsq{})}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

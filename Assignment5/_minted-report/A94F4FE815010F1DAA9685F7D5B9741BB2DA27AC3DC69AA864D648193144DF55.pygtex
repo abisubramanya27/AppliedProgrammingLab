@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{a}\PYG{p}{,}\PYG{n}{b} \PYG{o}{=} \PYG{n}{lstsq}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{c\PYGZus{}}\PYG{p}{[}\PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n}{Niter}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{499}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)],}
+	\PYG{n}{np}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{errors}\PYG{p}{[}\PYG{l+m+mi}{499}\PYG{p}{:]))[}\PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{n}{a} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The values of A and B for which Ae\PYGZca{}(Bk) fits}
+	\PYG{n}{the} \PYG{n}{error} \PYG{n}{after} \PYG{l+m+mi}{500} \PYG{n}{iterations} \PYG{n}{are}\PYG{p}{:}\PYG{l+s+s1}{\PYGZsq{})}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{)}
+\PYG{n}{lerr} \PYG{o}{=} \PYG{n}{a} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{b}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))}
+
+\PYG{n}{A}\PYG{p}{,}\PYG{n}{B} \PYG{o}{=} \PYG{n}{lstsq}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{c\PYGZus{}}\PYG{p}{[}\PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n}{Niter}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)],}\PYG{n}{np}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{errors}\PYG{p}{))[}\PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{n}{A} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The values of A and B for which Ae\PYGZca{}(Bk) fits}
+	\PYG{n}{the} \PYG{n}{entire} \PYG{n}{error} \PYG{n}{vector} \PYG{n}{are}\PYG{p}{:}\PYG{l+s+s1}{\PYGZsq{})}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{B}\PYG{p}{)}
+\PYG{n}{err} \PYG{o}{=} \PYG{n}{A} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{B}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))}
+
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{errors}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Iteration Number\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Log of Error\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{fn} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{,}\PYG{n}{arg3} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}r\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Semilogy Plot of Error vs}
+	\PYG{n}{Iteration} \PYG{n}{Number}\PYG{l+s+s1}{\PYGZsq{},label = \PYGZsq{}}\PYG{n}{Original} \PYG{n}{Errors}\PYG{l+s+s1}{\PYGZsq{})}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{lerr}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}b\PYGZhy{}\PYGZsq{}}\PYG{p}{,}
+	\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Linearly fitted error for \PYGZgt{}500 iterations (Fit 1)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{Niter}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{n}{err}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}g\PYGZhy{}\PYGZsq{}}\PYG{p}{,}
+	\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Linearly fitted error for entire error vector (Fit 2)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

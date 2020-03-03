@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{fig1} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}
+\PYG{n}{ax} \PYG{o}{=} \PYG{n}{p3}\PYG{o}{.}\PYG{n}{Axes3D}\PYG{p}{(}\PYG{n}{fig1}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The 3\PYGZhy{}D Surface plot of the potential\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{surf} \PYG{o}{=} \PYG{n}{ax}\PYG{o}{.}\PYG{n}{plot\PYGZus{}surface}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Phi}\PYG{p}{,}\PYG{n}{rstride} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{cstride} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,}
+	\PYG{n}{cmap} \PYG{o}{=} \PYG{n}{matplotlib}\PYG{o}{.}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{viridis}\PYG{p}{,}\PYG{n}{linewidth} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{n}{cbaxes} \PYG{o}{=} \PYG{n}{fig1}\PYG{o}{.}\PYG{n}{add\PYGZus{}axes}\PYG{p}{([}\PYG{l+m+mf}{0.96}\PYG{p}{,} \PYG{l+m+mf}{0.1}\PYG{p}{,} \PYG{l+m+mf}{0.03}\PYG{p}{,} \PYG{l+m+mf}{0.8}\PYG{p}{])}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{(}\PYG{n}{surf}\PYG{p}{,}\PYG{n}{cax} \PYG{o}{=} \PYG{n}{cbaxes}\PYG{p}{,}\PYG{n}{pad} \PYG{o}{=} \PYG{l+m+mf}{0.2}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}X\PYGZhy{}axis\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Y\PYGZhy{}axis\PYGZdq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{contourf}\PYG{p}{,}\PYG{n}{Phi}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Contour Plot of Potential\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{cmap} \PYG{o}{=} \PYG{n}{matplotlib}\PYG{o}{.}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{viridis}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{X}\PYG{p}{[}\PYG{n}{X}\PYG{o}{*}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y}\PYG{o}{*}\PYG{n}{Y} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.35}\PYG{o}{*}\PYG{l+m+mf}{0.35}\PYG{p}{],}\PYG{n}{Y}\PYG{p}{[}\PYG{n}{X}\PYG{o}{*}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y}\PYG{o}{*}\PYG{n}{Y} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.35}\PYG{o}{*}\PYG{l+m+mf}{0.35}\PYG{p}{],}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}
+	\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Points with potential 1V\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}
