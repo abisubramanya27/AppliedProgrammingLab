@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{100}\PYG{p}{,}\PYG{l+m+mi}{300}\PYG{p}{)}
+\PYG{n}{H} \PYG{o}{=} \PYG{n}{transfer\PYGZus{}fn}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}We use the following 5 colours for the lines :}
+\PYG{c+c1}{\PYGZsh{}Black Green Red Cyan and Magenta}
+\PYG{k}{for} \PYG{n}{f}\PYG{p}{,}\PYG{n}{col} \PYG{o+ow}{in} \PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mf}{1.4}\PYG{p}{,}\PYG{l+m+mf}{1.61}\PYG{p}{,}\PYG{l+m+mf}{0.05}\PYG{p}{),[}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}g\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}c\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}m\PYGZsq{}}\PYG{p}{]):}
+	\PYG{n}{u} \PYG{o}{=} \PYG{n}{input\PYGZus{}td}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{l+m+mf}{0.05}\PYG{p}{,}\PYG{n}{f}\PYG{p}{)}
+	\PYG{n}{t}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{svec} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{H}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+	\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}t\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}x(t)\PYGZdl{}\PYGZsq{}}\PYG{p}{,}
+		\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}System responses for different frequencies}
+		\PYG{k}{with} \PYG{n}{decay} \PYG{n}{rate} \PYG{o}{=} \PYG{l+m+mf}{0.05}\PYG{l+s+s1}{\PYGZsq{},arg3 = col+\PYGZsq{}}\PYG{o}{\PYGZhy{}}\PYG{l+s+s1}{\PYGZsq{},label = \PYGZsq{}}\PYG{n}{freq} \PYG{l+s+s1}{\PYGZsq{}+str(f))}
+
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}We make the Bode plot of the transfer function to understand it better}
+\PYG{n}{w}\PYG{p}{,}\PYG{n}{s}\PYG{p}{,}\PYG{n}{phi} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lti}\PYG{p}{(}\PYG{n}{H}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{H}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{.}\PYG{n}{bode}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Bode plot of Transfer function of single spring system\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{bodeplot}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{s}\PYG{p}{,}\PYG{n}{phi}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

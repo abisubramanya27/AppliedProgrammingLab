@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}Defining time vector appropriately from 0 to 10msec with 1e\PYGZhy{}7 time steps}
+	\PYG{n}{to} \PYG{n}{cpature} \PYG{n}{the} \PYG{n}{fast} \PYG{n}{variation}
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mf}{10e\PYGZhy{}3}\PYG{p}{,}\PYG{l+m+mf}{1e\PYGZhy{}7}\PYG{p}{)}
+\PYG{n}{H} \PYG{o}{=} \PYG{n}{RLCtf}\PYG{p}{()}
+
+\PYG{n}{w}\PYG{p}{,}\PYG{n}{s}\PYG{p}{,}\PYG{n}{phi} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lti}\PYG{p}{(}\PYG{n}{H}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{H}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{.}\PYG{n}{bode}\PYG{p}{()}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{n}{bodeplot}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{s}\PYG{p}{,}\PYG{n}{phi}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{suptitle}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Bode plot of Transfer function of RLC filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

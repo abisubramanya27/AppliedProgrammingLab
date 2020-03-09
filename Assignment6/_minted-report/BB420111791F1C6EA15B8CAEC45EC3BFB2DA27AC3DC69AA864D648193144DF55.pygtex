@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{input\PYGZus{}fn}\PYG{p}{(}\PYG{n}{decay}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{n}{cos\PYGZus{}term}\PYG{o}{=}\PYG{l+m+mf}{1.5}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Laplace Tranform of input function\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{poly1d}\PYG{p}{([}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{decay}\PYG{p}{]),}
+		\PYG{n}{np}\PYG{o}{.}\PYG{n}{poly1d}\PYG{p}{([}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{decay}\PYG{p}{,}\PYG{n}{decay}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{+} \PYG{n}{cos\PYGZus{}term}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{]))}
+
+\PYG{k}{def} \PYG{n+nf}{transfer\PYGZus{}fn}\PYG{p}{(}\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mf}{2.25}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Transfer function of system}
+\PYG{l+s+sd}{	for (a*s\PYGZca{}2 + b*s + c)*X(s)\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{poly1d}\PYG{p}{([}\PYG{l+m+mi}{1}\PYG{p}{]),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{poly1d}\PYG{p}{([}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{]))}
+
+\PYG{k}{def} \PYG{n+nf}{zero\PYGZus{}st}\PYG{p}{(}\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mf}{2.25}\PYG{p}{,}\PYG{n}{xi}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{xii}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Zero state Response of system}
+\PYG{l+s+sd}{	for (a*s\PYGZca{}2 + b*s + c)*X(s) with x(0) = xi and dx/dt at t = 0 is xii\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{poly1d}\PYG{p}{([}\PYG{n}{a}\PYG{o}{*}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{b}\PYG{o}{*}\PYG{p}{(}\PYG{n}{xi}\PYG{o}{+}\PYG{n}{xii}\PYG{p}{)]),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{poly1d}\PYG{p}{([}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{]))}
+
+\PYG{k}{def} \PYG{n+nf}{output\PYGZus{}fn}\PYG{p}{(}\PYG{n}{F}\PYG{p}{,}\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mf}{2.25}\PYG{p}{,}\PYG{n}{xi}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{xii}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Laplace Transform of system output}
+\PYG{l+s+sd}{	where F is input in Laplace domain\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{n}{ziN}\PYG{p}{,}\PYG{n}{ziD} \PYG{o}{=} \PYG{n}{zero\PYGZus{}inp}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{)}
+	\PYG{n}{zsN}\PYG{p}{,}\PYG{n}{zsD} \PYG{o}{=} \PYG{n}{zero\PYGZus{}st}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{,}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{xii}\PYG{p}{)}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{polyadd}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{polymul}\PYG{p}{(}\PYG{n}{F}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{ziN}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{polymul}\PYG{p}{(}\PYG{n}{F}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{zsN}\PYG{p}{)),}
+		\PYG{n}{np}\PYG{o}{.}\PYG{n}{polymul}\PYG{p}{(}\PYG{n}{F}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{ziD}\PYG{p}{))}
+
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{50}\PYG{p}{,}\PYG{l+m+mi}{200}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}Plotting the output (x) for decay rate = 0.5 (Qn1)}
+\PYG{n}{t}\PYG{p}{,}\PYG{n}{x1} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{impulse}\PYG{p}{(}\PYG{n}{output\PYGZus{}fn}\PYG{p}{(}\PYG{n}{input\PYGZus{}fn}\PYG{p}{()),}\PYG{k+kc}{None}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}t\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}x(t)\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}
+	\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}System response for decay rate = 0.5\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}Plotting the output (x) for decay rate = 0.05 (Qn2)}
+\PYG{n}{t}\PYG{p}{,}\PYG{n}{x2} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{impulse}\PYG{p}{(}\PYG{n}{output\PYGZus{}fn}\PYG{p}{(}\PYG{n}{input\PYGZus{}fn}\PYG{p}{(}\PYG{n}{decay}\PYG{o}{=}\PYG{l+m+mf}{0.05}\PYG{p}{)),}\PYG{k+kc}{None}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}t\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}x(t)\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}
+	\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}System response for decay rate = 0.05\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

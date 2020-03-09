@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{RLCinp}\PYG{p}{():}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Input to the RLC circuit\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mf}{1e3}\PYG{o}{*}\PYG{n}{t}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mf}{1e6}\PYG{o}{*}\PYG{n}{t}\PYG{p}{))}
+\end{Verbatim}

@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}Solving for the RLC filter output}
+\PYG{n}{u} \PYG{o}{=} \PYG{n}{RLCinp}\PYG{p}{()}
+\PYG{n}{t}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{svec} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{H}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}Plotting the slow time and fast time outputs separately}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}V(t)\PYGZsq{}}\PYG{p}{,}\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Plot of Output voltage of}
+	\PYG{n}{RLC} \PYG{n}{circuit} \PYG{o}{\PYGZhy{}} \PYG{n}{Slow} \PYG{n}{time}\PYG{l+s+s1}{\PYGZsq{})}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{[:}\PYG{l+m+mi}{300}\PYG{p}{],}\PYG{n}{x}\PYG{p}{[:}\PYG{l+m+mi}{300}\PYG{p}{],}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}V(t)\PYGZsq{}}\PYG{p}{,}\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Plot of Output voltage of}
+	\PYG{n}{RLC} \PYG{n}{circuit} \PYG{o}{\PYGZhy{}} \PYG{n}{Fast} \PYG{n}{time}\PYG{l+s+s1}{\PYGZsq{})}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{input\PYGZus{}td}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{decay}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{n}{cos\PYGZus{}term}\PYG{o}{=}\PYG{l+m+mf}{1.5}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Return list of input values in time domain}
+\PYG{l+s+sd}{		corresponding to the t values given\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{f}\PYG{o}{*}\PYG{n}{t}\PYG{p}{)}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{n}{decay}\PYG{o}{*}\PYG{n}{t}\PYG{p}{))}
+\end{Verbatim}

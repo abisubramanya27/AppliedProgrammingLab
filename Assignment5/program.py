@@ -51,11 +51,11 @@ def PLOT(x,y,fig_no = 0,label_x = r'$\rightarrow$',label_y = r'$\rightarrow$',fn
 	pl.title(title)
 
 ii = np.where(X*X + Y*Y <= 0.35*0.35)
-Phi[ii] = 1
+Phi[ii[::-1]] = 1
 
 #Plotting the contour of potential
 PLOT(x,y,1,"X-axis","Y-axis",pl.contourf,Phi,"Contour Plot of Potential",True,matplotlib.cm.hot)
-pl.plot(X[X*X + Y*Y < 0.35*0.35],Y[X*X + Y*Y < 0.35*0.35],'ro',label = 'Points with potential 1V')
+pl.plot(X[X*X + Y*Y <= 0.35*0.35],Y[X*X + Y*Y <= 0.35*0.35],'ro',label = 'Points with potential 1V')
 pl.legend()
 pl.show()
 
@@ -71,10 +71,14 @@ for k in range(Niter):
 	Phi[1:-1,0] = Phi[1:-1,1]  #Boundary condition for left side
 	Phi[1:-1,-1] = Phi[1:-1,-2]  #Boundary condition for right side
 	Phi[-1,:] = Phi[-2,:]  #Boundary condition for top side
-	Phi[ii] = 1.0  #Condition for 1V points
+	Phi[ii[::-1]] = 1.0  #Condition for 1V points
 	errors[k] = (abs(Phi-oldphi)).max()
 
 #Plotting Errors
+#Error vs Iteration Plot
+PLOT(np.arange(1,Niter+1),errors,10,"Iteration Number","Error",fn = pl.plot,title='Plot of Error vs Iteration Number',label = 'Line')
+pl.legend()
+pl.show()
 #Semilog Plot
 PLOT(np.arange(1,Niter+1),errors,2,"Iteration Number","Log of Error",fn = pl.semilogy,title='Semilogy Plot of Error vs Iteration Number',label = 'Line')
 pl.semilogy(np.arange(1,Niter+1,30),errors[0:Niter:30],'yo',label = 'Points')
@@ -121,13 +125,13 @@ pl.show()
 fig1 = pl.figure(6)
 ax = p3.Axes3D(fig1)
 pl.title('The 3-D Surface plot of the potential')
-surf = ax.plot_surface(Y,X,Phi,rstride = 1,cstride = 1,cmap = matplotlib.cm.viridis,linewidth = 0)
+surf = ax.plot_surface(X,Y,Phi.T,rstride = 1,cstride = 1,cmap = matplotlib.cm.viridis,linewidth = 0)
 fig1.colorbar(surf,shrink = 0.8,aspect = 20)
 pl.show()
 
 #Contour plot of the potential after convergence
 PLOT(x,y,7,"X-axis","Y-axis",pl.contourf,Phi,"Contour Plot of Potential",cmap = matplotlib.cm.viridis)
-pl.plot(X[X*X + Y*Y < 0.35*0.35],Y[X*X + Y*Y < 0.35*0.35],'ro',label = 'Points with potential 1V')
+pl.plot(X[X*X + Y*Y <= 0.35*0.35],Y[X*X + Y*Y <= 0.35*0.35],'ro',label = 'Points with potential 1V')
 pl.legend()
 pl.show()
 
@@ -140,7 +144,7 @@ Jx[:,1:-1] = 0.5*(Phi[:,0:-2]-Phi[:,2:])
 Jy[1:-1,:] = 0.5*(Phi[0:-2,:]-Phi[2:,:])
 pl.figure(8)
 pl.quiver(x,y,Jx,Jy)
-pl.plot(X[X*X + Y*Y < 0.35*0.35],Y[X*X + Y*Y < 0.35*0.35],'ro',label = 'Points with potential 1V')
+pl.plot(X[X*X + Y*Y <= 0.35*0.35],Y[X*X + Y*Y <= 0.35*0.35],'ro',label = 'Points with potential 1V')
 pl.xlabel('X-axis')
 pl.ylabel('Y-axis')
 pl.legend(loc = 1)
@@ -158,7 +162,7 @@ for k in range(Niter):
 	Temp[1:-1,0] = Temp[1:-1,1]  #Boundary condition for left side
 	Temp[1:-1,-1] = Temp[1:-1,-2]  #Boundary condition for right side
 	Temp[-1,:] = Temp[-2,:]  #Boundary condition for top side
-	Temp[ii] = 300  #Condition for 1V points
+	Temp[ii[::-1]] = 300  #Condition for 1V points
 
 #Contour plot of the Temperature
 PLOT(x,y,9,"X-axis","Y-axis",pl.contourf,Temp,"Contour Plot of Temperature",cmap = matplotlib.cm.hot)
