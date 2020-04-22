@@ -1,0 +1,54 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{estCTFT}\PYG{p}{(}\PYG{n}{y\PYGZus{}fn}\PYG{p}{,}\PYG{n}{org\PYGZus{}fn}\PYG{p}{,}\PYG{n}{tim} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{pi}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{pi}\PYG{p}{),}\PYG{n}{N} \PYG{o}{=} \PYG{l+m+mi}{512}\PYG{p}{,}\PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{):}
+    \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{} Utility function to plot DFT for Gaussian by taking a window of values}
+\PYG{l+s+sd}{       and estimate how close the DFT is to the CTFT.}
+
+\PYG{l+s+sd}{	y\PYGZus{}fn : function for which spectrum needs to be obtained}
+\PYG{l+s+sd}{	org\PYGZus{}fn : the orginal CTFT function}
+\PYG{l+s+sd}{	tim : time interval of form (starting time,ending time)}
+\PYG{l+s+sd}{		where ending time has to be excluded}
+\PYG{l+s+sd}{	N : number of samples in time domain}
+\PYG{l+s+sd}{	name : Name of function for the spectrum}
+\PYG{l+s+sd}{	\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{start}\PYG{p}{,}\PYG{n}{end} \PYG{o}{=} \PYG{n}{tim}
+
+    \PYG{n}{t} \PYG{o}{=} \PYG{n}{linspace}\PYG{p}{(}\PYG{n}{end}\PYG{p}{,}\PYG{n}{start}\PYG{p}{,}\PYG{n}{N}\PYG{p}{,}\PYG{n}{endpoint}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+    \PYG{n}{y} \PYG{o}{=} \PYG{n}{y\PYGZus{}fn}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}
+    \PYG{n}{Y} \PYG{o}{=} \PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{fft}\PYG{p}{(}\PYG{n}{ifftshift}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)))}\PYG{o}{*}\PYG{p}{(}\PYG{n}{end}\PYG{o}{\PYGZhy{}}\PYG{n}{start}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{*}\PYG{n}{N}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{}Using ifftshift to remove phase issues}
+
+    \PYG{n}{w}\PYG{o}{=}\PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{N}\PYG{p}{,}\PYG{n}{endpoint}\PYG{o}{=} \PYG{k+kc}{False}\PYG{p}{);}
+    \PYG{n}{w} \PYG{o}{=} \PYG{n}{w}\PYG{o}{*}\PYG{p}{(}\PYG{n}{N}\PYG{o}{/}\PYG{p}{(}\PYG{n}{end}\PYG{o}{\PYGZhy{}}\PYG{n}{start}\PYG{p}{))}
+
+    \PYG{n}{ctft} \PYG{o}{=} \PYG{n}{org\PYGZus{}fn}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{}Sum of absolute error between orginal CTFT and the DFT}
+    \PYG{n}{error} \PYG{o}{=} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{ctft}\PYG{o}{\PYGZhy{}}\PYG{n}{Y}\PYG{p}{))}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Total absolute error between CTFT and DFT is :\PYGZsq{}}\PYG{p}{,}\PYG{n}{error}\PYG{p}{)}
+
+    \PYG{n}{fig}\PYG{p}{,} \PYG{p}{(}\PYG{n}{ax1}\PYG{p}{,} \PYG{n}{ax2}\PYG{p}{)} \PYG{o}{=} \PYG{n}{subplots}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{ii} \PYG{o}{=} \PYG{n}{where}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{1e\PYGZhy{}3}\PYG{p}{)}
+    \PYG{n}{suptitle}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Spectrum of }\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{name}\PYG{p}{))}
+    \PYG{c+c1}{\PYGZsh{}Plotting the orginal CTFT of Gaussian in the same plot}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{ctft}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}y\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}CTFT\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{angle}\PYG{p}{(}\PYG{n}{ctft}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}yo\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}CTFT\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{),}\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}DFT\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlim}\PYG{p}{([}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{]),}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{])])}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{set\PYGZus{}ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}|Y|\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+     \PYG{c+c1}{\PYGZsh{}Plotting only the phase of relevant points}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{],}\PYG{n}{angle}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{]),}\PYG{l+s+s1}{\PYGZsq{}ro\PYGZsq{}}\PYG{p}{,}\PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}DFT\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlim}\PYG{p}{([}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{]),}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{])])}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{set\PYGZus{}ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}Phase of \PYGZdl{}Y\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}\PYGZbs{}omega\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{loc} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}upper right\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{loc} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}upper right\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{y\PYGZus{}gaussian} \PYG{o}{=} \PYG{k}{lambda} \PYG{n}{t} \PYG{p}{:} \PYG{n}{exp}\PYG{p}{(}\PYG{n}{t}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{ctft\PYGZus{}gaussian} \PYG{o}{=} \PYG{k}{lambda} \PYG{n}{w} \PYG{p}{:} \PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{/}\PYG{n}{sqrt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{p}{)}
+
+\PYG{n}{estCTFT}\PYG{p}{(}\PYG{n}{y\PYGZus{}gaussian}\PYG{p}{,}\PYG{n}{ctft\PYGZus{}gaussian}\PYG{p}{,(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{pi}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{pi}\PYG{p}{),}\PYG{l+m+mi}{1024}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}exp(\PYGZhy{}t\PYGZca{}}\PYG{l+s+si}{\PYGZob{}2\PYGZcb{}}\PYG{l+s+s2}{/2)\PYGZdl{}\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

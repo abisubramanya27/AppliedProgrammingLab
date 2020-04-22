@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}Extract the Transfer function and convert it to scipy lti form}
+\PYG{k}{def} \PYG{n+nf}{Simplify\PYGZus{}H}\PYG{p}{(}\PYG{n}{V}\PYG{p}{):}
+    \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Extracts Transfer function from the matrix inversion result\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{Vo} \PYG{o}{=} \PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}  \PYG{c+c1}{\PYGZsh{}The third element in the V column is the output voltage}
+    \PYG{n}{Vo} \PYG{o}{=} \PYG{n}{expand}\PYG{p}{(}\PYG{n}{simplify}\PYG{p}{(}\PYG{n}{Vo}\PYG{p}{))}  \PYG{c+c1}{\PYGZsh{}converting to rational form}
+    \PYG{n}{H} \PYG{o}{=} \PYG{n}{SympyToScipy}\PYG{p}{(}\PYG{n}{Vo}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{H}
+
+\PYG{c+c1}{\PYGZsh{}Convert the Transfer function form sympy to scipy lti form}
+\PYG{k}{def} \PYG{n+nf}{SympyToScipy}\PYG{p}{(}\PYG{n}{Vo}\PYG{p}{):}
+    \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Converts Transfer function in sympy to scipy\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{v1} \PYG{o}{=} \PYG{n}{fraction}\PYG{p}{(}\PYG{n}{Vo}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}converting to numerator and denominator form}
+    \PYG{n}{n}\PYG{p}{,}\PYG{n}{d} \PYG{o}{=} \PYG{n}{Poly}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{s}\PYG{p}{),}\PYG{n}{poly}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{s}\PYG{p}{)}
+    \PYG{n}{numer}\PYG{p}{,}\PYG{n}{denom} \PYG{o}{=} \PYG{n}{n}\PYG{o}{.}\PYG{n}{all\PYGZus{}coeffs}\PYG{p}{(),} \PYG{n}{d}\PYG{o}{.}\PYG{n}{all\PYGZus{}coeffs}\PYG{p}{()}  \PYG{c+c1}{\PYGZsh{}extract the coefficients of \PYGZsq{}s\PYGZsq{}}
+    \PYG{n}{numer}\PYG{p}{,}\PYG{n}{denom} \PYG{o}{=} \PYG{p}{[}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{f}\PYG{p}{)} \PYG{k}{for} \PYG{n}{f} \PYG{o+ow}{in} \PYG{n}{numer}\PYG{p}{],} \PYG{p}{[}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{f}\PYG{p}{)} \PYG{k}{for} \PYG{n}{f} \PYG{o+ow}{in} \PYG{n}{denom}\PYG{p}{]}
+    \PYG{n}{H} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lti}\PYG{p}{(}\PYG{n}{numer}\PYG{p}{,}\PYG{n}{denom}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{}converting to scipy lti form}
+    \PYG{k}{return} \PYG{n}{H}
+\end{Verbatim}

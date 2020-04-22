@@ -1,5 +1,5 @@
 ####################################################
-####### Applied Programming - Assignment 3 #########
+####### Applied Programming - Assignment 6 #########
 ####### Done by Abishek S ##########################
 ####################################################
 
@@ -28,7 +28,7 @@ def PLOT(x,y,fig_no = 0,label_x = r'$\rightarrow$',label_y = r'$\rightarrow$',fn
 	pl.ylabel(label_y,size = 17)
 	pl.title(title)
 
-#Deininf a general utility function for making BODE Plots
+#Defining a general utility function for making BODE Plots
 def bodeplot(w,s,phi):
 	'''Makes Bode Plots'''
 	pl.subplot(2,1,1)
@@ -152,4 +152,3 @@ PLOT(t[:300],x[:300],7,'t',r'$V_{o}(t)$',title = 'Plot of Output voltage of RLC 
 pl.show()
 
 ########################### END OF PROGRAM #####################################
-

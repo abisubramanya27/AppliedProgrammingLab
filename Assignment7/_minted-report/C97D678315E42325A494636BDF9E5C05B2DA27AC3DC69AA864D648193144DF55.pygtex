@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}Response of Low Pass and High Pass filter to high frequency damped sinusoid}
+\PYG{n}{damping\PYGZus{}factor} \PYG{o}{=} \PYG{l+m+mi}{3000}
+
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mf}{5e\PYGZhy{}4}\PYG{p}{,}\PYG{l+m+mf}{1e\PYGZhy{}7}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{}Time scale}
+
+\PYG{n}{inp} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{damping\PYGZus{}factor}\PYG{o}{*}\PYG{n}{t}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{((}\PYG{l+m+mi}{10}\PYG{o}{**}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{*}\PYG{n}{t}\PYG{p}{))}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{inp}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}t\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}V\PYGZus{}i(t)\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}High Frequency damped sinusoid input\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{t}\PYG{p}{,}\PYG{n}{vtd}\PYG{p}{,}\PYG{n}{svec} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{H\PYGZus{}lp}\PYG{p}{,}\PYG{n}{inp}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{vtd}\PYG{p}{,}\PYG{l+m+mi}{9}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}t\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}V\PYGZus{}o(t)\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{,}
+	\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Response of low pass filter to high frequency damped sinusoid\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{t}\PYG{p}{,}\PYG{n}{vtd}\PYG{p}{,}\PYG{n}{svec} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{H\PYGZus{}hp}\PYG{p}{,}\PYG{n}{inp}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{vtd}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}t\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}V\PYGZus{}o(t)\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{,}
+	\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Response of high pass filter to high frequency damped sinusoid\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

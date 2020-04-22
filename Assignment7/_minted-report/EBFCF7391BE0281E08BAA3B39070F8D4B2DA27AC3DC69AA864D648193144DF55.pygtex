@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mf}{1e\PYGZhy{}2}\PYG{p}{,}\PYG{l+m+mf}{1e\PYGZhy{}7}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{}Time scale}
+
+\PYG{n}{A}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{V} \PYG{o}{=} \PYG{n}{HighPass}\PYG{p}{(}\PYG{l+m+mf}{1e4}\PYG{p}{,}\PYG{l+m+mf}{1e4}\PYG{p}{,}\PYG{l+m+mf}{1e\PYGZhy{}9}\PYG{p}{,}\PYG{l+m+mf}{1e\PYGZhy{}9}\PYG{p}{,}\PYG{l+m+mf}{1.586}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{s}\PYG{p}{)}
+\PYG{n}{\PYGZus{}}\PYG{p}{,}\PYG{n}{vtd} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{impulse}\PYG{p}{(}\PYG{n}{Simplify\PYGZus{}H}\PYG{p}{(}\PYG{n}{V}\PYG{p}{),}\PYG{k+kc}{None}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{vtd}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}t\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}V\PYGZus{}o(t)\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{,}
+	\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Step response of High Pass Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

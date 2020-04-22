@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{t}\PYG{p}{,}\PYG{n}{vtd}\PYG{p}{,}\PYG{n}{svec} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{H\PYGZus{}lp}\PYG{p}{,}\PYG{n}{inp}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{vtd}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}t\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}V\PYGZus{}o(t)\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{,}
+	\PYG{n}{title} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Response of low pass filter to sum of 2 sinusoids\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

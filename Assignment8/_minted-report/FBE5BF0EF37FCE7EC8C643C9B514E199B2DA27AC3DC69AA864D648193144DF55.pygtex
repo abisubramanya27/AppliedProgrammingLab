@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{x}\PYG{o}{=}\PYG{n}{rand}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}
+\PYG{n}{X}\PYG{o}{=}\PYG{n}{fft}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{n}{y}\PYG{o}{=}\PYG{n}{ifft}\PYG{p}{(}\PYG{n}{X}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{c\PYGZus{}}\PYG{p}{[}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{][:}\PYG{l+m+mi}{10}\PYG{p}{])}  \PYG{c+c1}{\PYGZsh{}printing first 10 lines alone to get an idea}
+			\PYG{c+c1}{\PYGZsh{}of how close x and y values are}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Maximum absolute error between x and y is :\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{y}\PYG{p}{)}\PYG{o}{.}\PYG{n}{max}\PYG{p}{())}
+\end{Verbatim}
