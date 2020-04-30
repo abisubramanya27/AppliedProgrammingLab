@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{pylab} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{import} \PYG{n+nn}{sys}
+\PYG{k+kn}{import} \PYG{n+nn}{mpl\PYGZus{}toolkits}\PYG{n+nn}{.}\PYG{n+nn}{mplot3d}\PYG{n+nn}{.}\PYG{n+nn}{axes3d} \PYG{k}{as} \PYG{n+nn}{p3}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{cm}
+\end{Verbatim}

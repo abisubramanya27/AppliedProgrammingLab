@@ -1,0 +1,50 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{y\PYGZus{}ch} \PYG{o}{=} \PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mi}{16}\PYG{o}{*}\PYG{n}{t}\PYG{o}{*}\PYG{p}{(}\PYG{l+m+mf}{1.5}\PYG{o}{+}\PYG{n}{t}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{p}{)))}
+\PYG{n}{NR} \PYG{o}{=} \PYG{l+m+mi}{64}
+\PYG{n}{NC} \PYG{o}{=} \PYG{l+m+mi}{1024}\PYG{o}{//}\PYG{l+m+mi}{64}
+\PYG{n}{y\PYGZus{}2D} \PYG{o}{=} \PYG{n}{zeros}\PYG{p}{((}\PYG{n}{NR}\PYG{p}{,}\PYG{n}{NC}\PYG{p}{))}
+\PYG{n}{Y\PYGZus{}2D} \PYG{o}{=} \PYG{n}{zeros}\PYG{p}{((}\PYG{n}{NR}\PYG{p}{,}\PYG{n}{NC}\PYG{p}{),}\PYG{n}{dtype} \PYG{o}{=} \PYG{n+nb}{complex}\PYG{p}{)}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{NC}\PYG{p}{):}
+	\PYG{c+c1}{\PYGZsh{}Windowing}
+	\PYG{n}{y\PYGZus{}2D}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{y\PYGZus{}ch}\PYG{p}{[}\PYG{n}{i}\PYG{o}{*}\PYG{n}{NR}\PYG{p}{:(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{n}{NR}\PYG{p}{]}\PYG{o}{*}\PYG{n}{wnd}\PYG{p}{(}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{64}\PYG{p}{))}
+	\PYG{c+c1}{\PYGZsh{}The sample corresponding to \PYGZhy{}tmax should be set zero}
+	\PYG{n}{y\PYGZus{}2D}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}
+	\PYG{n}{Y\PYGZus{}2D}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{fft}\PYG{p}{(}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{y\PYGZus{}2D}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{])))}\PYG{o}{/}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{NR}\PYG{p}{)}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{pi}\PYG{p}{,}\PYG{l+m+mi}{16}\PYG{p}{,}\PYG{n}{endpoint} \PYG{o}{=} \PYG{k+kc}{False}\PYG{p}{)}
+\PYG{n}{w} \PYG{o}{=} \PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{pi}\PYG{p}{,}\PYG{l+m+mi}{64}\PYG{p}{,}\PYG{n}{endpoint} \PYG{o}{=} \PYG{k+kc}{False}\PYG{p}{)}
+\PYG{n}{w} \PYG{o}{=} \PYG{n}{w}\PYG{o}{*}\PYG{l+m+mf}{1024.0}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{p}{);}
+\PYG{c+c1}{\PYGZsh{}Forming the x and y values for the surface plot}
+\PYG{n}{wv}\PYG{p}{,}\PYG{n}{xv} \PYG{o}{=} \PYG{n}{meshgrid}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{indexing} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}ij\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}We plot the surface plot of magnitude of Y}
+\PYG{n}{fig} \PYG{o}{=} \PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{ax} \PYG{o}{=} \PYG{n}{p3}\PYG{o}{.}\PYG{n}{Axes3D}\PYG{p}{(}\PYG{n}{fig}\PYG{p}{)}
+\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}3\PYGZhy{}D spectrogram \PYGZhy{} Magnitude\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{surf} \PYG{o}{=} \PYG{n}{ax}\PYG{o}{.}\PYG{n}{plot\PYGZus{}surface}\PYG{p}{(}\PYG{n}{wv}\PYG{p}{,}\PYG{n}{xv}\PYG{p}{,}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y\PYGZus{}2D}\PYG{p}{),}\PYG{n}{cmap} \PYG{o}{=} \PYG{n}{cm}\PYG{o}{.}\PYG{n}{coolwarm}\PYG{p}{,}\PYG{n}{linewidth} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,}
+			\PYG{n}{antialiased} \PYG{o}{=} \PYG{k+kc}{False}\PYG{p}{)}
+\PYG{n}{fig}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{(}\PYG{n}{surf}\PYG{p}{,}\PYG{n}{shrink} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{n}{aspect} \PYG{o}{=} \PYG{l+m+mi}{5}\PYG{p}{)}
+\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Frequency\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Time\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}We plot the contour plot of magnitude of Y}
+\PYG{n}{fig} \PYG{o}{=} \PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Contour plot of Magnitude\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{surf} \PYG{o}{=} \PYG{n}{contourf}\PYG{p}{(}\PYG{n}{xv}\PYG{p}{,}\PYG{n}{wv}\PYG{p}{,}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y\PYGZus{}2D}\PYG{p}{))}
+\PYG{n}{ylim}\PYG{p}{([}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{50}\PYG{p}{,}\PYG{l+m+mi}{50}\PYG{p}{])}
+\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Frequency\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Time\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{fig}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{(}\PYG{n}{surf}\PYG{p}{)}
+\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}We plot the surface plot of angle of Y}
+\PYG{n}{fig} \PYG{o}{=} \PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{ax} \PYG{o}{=} \PYG{n}{p3}\PYG{o}{.}\PYG{n}{Axes3D}\PYG{p}{(}\PYG{n}{fig}\PYG{p}{)}
+\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}3\PYGZhy{}D spectrogram \PYGZhy{} Angle\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{surf} \PYG{o}{=} \PYG{n}{ax}\PYG{o}{.}\PYG{n}{plot\PYGZus{}surface}\PYG{p}{(}\PYG{n}{wv}\PYG{p}{,}\PYG{n}{xv}\PYG{p}{,}\PYG{n}{angle}\PYG{p}{(}\PYG{n}{Y\PYGZus{}2D}\PYG{p}{),}\PYG{n}{cmap} \PYG{o}{=} \PYG{n}{cm}\PYG{o}{.}\PYG{n}{coolwarm}\PYG{p}{,}\PYG{n}{linewidth} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,}
+			\PYG{n}{antialiased} \PYG{o}{=} \PYG{k+kc}{False}\PYG{p}{)}
+\PYG{n}{fig}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{(}\PYG{n}{surf}\PYG{p}{,}\PYG{n}{shrink} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{n}{aspect} \PYG{o}{=} \PYG{l+m+mi}{5}\PYG{p}{)}
+\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Frequency\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Time\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{t}\PYG{o}{=}\PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{pi}\PYG{p}{,}\PYG{l+m+mi}{65}\PYG{p}{);}\PYG{n}{t}\PYG{o}{=}\PYG{n}{t}\PYG{p}{[:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+\PYG{n}{dt}\PYG{o}{=}\PYG{n}{t}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{t}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}\PYG{n}{fmax}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{dt}
+\PYG{n}{y}\PYG{o}{=}\PYG{n}{t}
+\PYG{c+c1}{\PYGZsh{}The sample corresponding to \PYGZhy{}tmax should be set zero}
+\PYG{n}{y}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n}{y}\PYG{o}{=}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}make y start with y(t=0)}
+\PYG{n}{Y}\PYG{o}{=}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{fft}\PYG{p}{(}\PYG{n}{y}\PYG{p}{))}\PYG{o}{/}\PYG{l+m+mf}{64.0}
+\PYG{n}{w}\PYG{o}{=}\PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{pi}\PYG{o}{*}\PYG{n}{fmax}\PYG{p}{,}\PYG{n}{pi}\PYG{o}{*}\PYG{n}{fmax}\PYG{p}{,}\PYG{l+m+mi}{65}\PYG{p}{);}\PYG{n}{w}\PYG{o}{=}\PYG{n}{w}\PYG{p}{[:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{semilogx}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{w}\PYG{p}{),}\PYG{l+m+mi}{20}\PYG{o}{*}\PYG{n}{log10}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{)),}\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{xlim}\PYG{p}{([}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{])}
+\PYG{n}{ylim}\PYG{p}{([}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{])}
+\PYG{n}{xticks}\PYG{p}{([}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{],[}\PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}5\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}10\PYGZdq{}}\PYG{p}{],}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{)}
+\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}|Y|\PYGZdl{} (dB)\PYGZdq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{)}
+\PYG{n}{title}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}Spectrum of a digital ramp\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}\PYGZbs{}omega\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{)}
+\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

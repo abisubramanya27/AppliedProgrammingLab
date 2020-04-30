@@ -1,0 +1,43 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{est\PYGZus{}delta}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{sup} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}3}\PYG{p}{,}\PYG{n}{window} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Estimates delta (d) from the spectrum of cos(w*t+d)\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{n}{ii\PYGZus{}1} \PYG{o}{=} \PYG{n}{where}\PYG{p}{(}\PYG{n}{logical\PYGZus{}and}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{)}\PYG{o}{\PYGZgt{}}\PYG{n}{sup}\PYG{p}{,} \PYG{n}{w}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0}\PYG{p}{))[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	\PYG{n}{sort}\PYG{p}{(}\PYG{n}{ii\PYGZus{}1}\PYG{p}{)}
+	\PYG{n}{points} \PYG{o}{=} \PYG{n}{ii\PYGZus{}1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{window}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}
+	\PYG{c+c1}{\PYGZsh{}weighted average for first 2 points}
+	\PYG{k}{return} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{angle}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{[}\PYG{n}{points}\PYG{p}{]))}\PYG{o}{/}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{points}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{est\PYGZus{}omega}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{):}
+	\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}Estimates omega (w) from the spectrum of cos(w*t+d)\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+	\PYG{n}{ii} \PYG{o}{=} \PYG{n}{where}\PYG{p}{(}\PYG{n}{w} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
+	\PYG{c+c1}{\PYGZsh{}omega estimated by weighted average}
+	\PYG{k}{return} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{])}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{w}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{])}\PYG{o}{/}\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{[}\PYG{n}{ii}\PYG{p}{])}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{CosEst}\PYG{p}{(}\PYG{n}{ww}\PYG{p}{,}\PYG{n}{d}\PYG{p}{):}
+    \PYG{n}{fn} \PYG{o}{=} \PYG{k}{lambda} \PYG{n}{t}\PYG{p}{:}  \PYG{n}{cos}\PYG{p}{(}\PYG{n}{ww}\PYG{o}{*}\PYG{n}{t}\PYG{o}{+}\PYG{n}{d}\PYG{p}{)}\PYG{o}{*}\PYG{n}{wnd}\PYG{p}{(}\PYG{n}{arange}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)))}
+    \PYG{n}{ax1}\PYG{p}{,}\PYG{n}{ax2}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{w} \PYG{o}{=} \PYG{n}{DFT}\PYG{p}{(}\PYG{n}{fn}\PYG{p}{,(}\PYG{o}{\PYGZhy{}}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{pi}\PYG{p}{),}\PYG{l+m+mi}{128}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}cos(\PYGZbs{}omega\PYGZus{}}\PYG{l+s+si}{\PYGZob{}0\PYGZcb{}}\PYG{l+s+s1}{t+\PYGZbs{}delta)\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlim}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlim}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{show}\PYG{p}{()}
+
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Noiseless Signal parameters : \PYGZsq{}}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}u03C9}\PYG{l+s+s1}{ :\PYGZsq{}}\PYG{p}{,}\PYG{n}{est\PYGZus{}omega}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{))}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}u03B4}\PYG{l+s+s1}{ :\PYGZsq{}}\PYG{p}{,}\PYG{n}{est\PYGZus{}delta}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{))}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{)}
+
+\PYG{n}{Yf} \PYG{o}{=} \PYG{n}{CosEst}\PYG{p}{(}\PYG{l+m+mf}{1.5}\PYG{p}{,}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{CosEst\PYGZus{}Noisy}\PYG{p}{(}\PYG{n}{ww}\PYG{p}{,}\PYG{n}{d}\PYG{p}{):}
+    \PYG{n}{fn} \PYG{o}{=} \PYG{k}{lambda} \PYG{n}{t}\PYG{p}{:}  \PYG{n}{cos}\PYG{p}{(}\PYG{n}{ww}\PYG{o}{*}\PYG{n}{t}\PYG{o}{+}\PYG{n}{d}\PYG{p}{)}\PYG{o}{*}\PYG{n}{wnd}\PYG{p}{(}\PYG{n}{arange}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)))} \PYG{o}{+} \PYG{l+m+mf}{0.1}\PYG{o}{*}\PYG{n}{randn}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{t}\PYG{p}{))}
+    \PYG{n}{ax1}\PYG{p}{,}\PYG{n}{ax2}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{w} \PYG{o}{=} \PYG{n}{DFT}\PYG{p}{(}\PYG{n}{fn}\PYG{p}{,(}\PYG{o}{\PYGZhy{}}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{pi}\PYG{p}{),}\PYG{l+m+mi}{128}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}cos(\PYGZbs{}omega\PYGZus{}}\PYG{l+s+si}{\PYGZob{}0\PYGZcb{}}\PYG{l+s+s1}{t+\PYGZbs{}delta)\PYGZbs{} with\PYGZbs{} noise\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlim}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlim}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}
+
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Noisy Signal parameters : \PYGZsq{}}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}u03C9}\PYG{l+s+s1}{ :\PYGZsq{}}\PYG{p}{,}\PYG{n}{est\PYGZus{}omega}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{))}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}u03B4}\PYG{l+s+s1}{ :\PYGZsq{}}\PYG{p}{,}\PYG{n}{est\PYGZus{}delta}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{))}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{)}
+
+\PYG{n}{Yf} \PYG{o}{=} \PYG{n}{CosEst\PYGZus{}Noisy}\PYG{p}{(}\PYG{l+m+mf}{1.5}\PYG{p}{,}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}
