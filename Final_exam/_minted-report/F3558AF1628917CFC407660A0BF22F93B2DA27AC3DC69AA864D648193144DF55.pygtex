@@ -1,0 +1,59 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k}{def} \PYG{n+nf}{solveLaplace}\PYG{p}{(}\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{,}\PYG{n}{dist}\PYG{p}{,}\PYG{n}{k}\PYG{p}{,}\PYG{n}{delta}\PYG{p}{,}\PYG{n}{Ni\PYGZus{}max}\PYG{p}{):}
+  \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+sd}{      The function solves Laplace equation given \PYGZhy{}}
+\PYG{l+s+sd}{          M : The number of nodes along y, including the boundary nodes}
+\PYG{l+s+sd}{          N : The number of nodes along x, including the boundary nodes}
+\PYG{l+s+sd}{          dist : Distance between nodes (same along x and along y)}
+\PYG{l+s+sd}{          k : The height given as the index k corresponding to h}
+\PYG{l+s+sd}{          delta : The desired accuracy for the potential obtained}
+\PYG{l+s+sd}{          Ni\PYGZus{}max : The maximum number of iterations to complete for convergence}
+\PYG{l+s+sd}{      \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{      The function returns \PYGZhy{}}
+\PYG{l+s+sd}{          phi[M,N] : The array of solved potential values correct to delta}
+\PYG{l+s+sd}{          Ni : Number of iterations actually carried out}
+\PYG{l+s+sd}{          err[Ni] : The vector of errors}
+\PYG{l+s+sd}{  \PYGZsq{}\PYGZsq{}\PYGZsq{}}
+  \PYG{c+c1}{\PYGZsh{} phi is a matrix where (0,0) corresponds to the lower left corner of tank}
+    \PYG{o+ow}{and} \PYG{p}{(}\PYG{n}{M}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{N}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{corresponds} \PYG{n}{to} \PYG{n}{the} \PYG{n}{top} \PYG{n}{right} \PYG{n}{corner}
+  \PYG{n}{phi} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{shape} \PYG{o}{=} \PYG{p}{(}\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{))} \PYG{c+c1}{\PYGZsh{} Initialising Potential grid to zero at all nodes}
+  \PYG{n}{phi}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{c+c1}{\PYGZsh{} Top boundary points are at 1V}
+  \PYG{c+c1}{\PYGZsh{} The bottom and side boundary points are at 0 V (grounded)}
+  \PYG{c+c1}{\PYGZsh{} which is already satisfied}
+  \PYG{n}{errors} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{Ni\PYGZus{}max}\PYG{p}{)}
+  \PYG{n}{Ni} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+  \PYG{k}{for} \PYG{n}{iter\PYGZus{}no} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{Ni\PYGZus{}max}\PYG{p}{):}
+      \PYG{n}{Ni} \PYG{o}{+=} \PYG{l+m+mi}{1}
+      \PYG{n}{oldPhi} \PYG{o}{=} \PYG{n}{phi}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+      \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{} Using vectorised code to execute code faster \PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+      \PYG{c+c1}{\PYGZsh{} Interior Points from 0 to (k\PYGZhy{}1)th index \PYGZhy{} average of surrounding points}
+      \PYG{n}{phi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.25} \PYG{o}{*} \PYG{p}{(}\PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+}
+        \PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{:}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{:])}
+      \PYG{c+c1}{\PYGZsh{} Interior Points from (k+1)th to Nth index \PYGZhy{} average of surrounding points}
+      \PYG{n}{phi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.25} \PYG{o}{*} \PYG{p}{(}\PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+}
+        \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{:])}
+      \PYG{c+c1}{\PYGZsh{} Interior Points at kth index \PYGZhy{} slightly different updation}
+      \PYG{c+c1}{\PYGZsh{} to handle Dn continuity}
+      \PYG{k}{global} \PYG{n}{e\PYGZus{}r}
+      \PYG{n}{phi}\PYG{p}{[}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{e\PYGZus{}r}\PYG{o}{*}\PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{e\PYGZus{}r}\PYG{p}{)}
+
+      \PYG{c+c1}{\PYGZsh{} The top, bottom and side boundaries are at constant potentials}
+      \PYG{c+c1}{\PYGZsh{} as initialised and unaffected by above update}
+      \PYG{c+c1}{\PYGZsh{} Hence not running below code and increase the time taken}
+      \PYG{c+c1}{\PYGZsh{} phi[0,:] = 0  \PYGZsh{} Bottom side}
+      \PYG{c+c1}{\PYGZsh{} phi[:,0] = 0  \PYGZsh{} Left side}
+      \PYG{c+c1}{\PYGZsh{} phi[:,\PYGZhy{}1] = 0  \PYGZsh{}Right side}
+      \PYG{c+c1}{\PYGZsh{} phi[\PYGZhy{}1,1:\PYGZhy{}1] = 1  \PYGZsh{} Top side}
+
+      \PYG{n}{errors}\PYG{p}{[}\PYG{n}{iter\PYGZus{}no}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{phi}\PYG{o}{\PYGZhy{}}\PYG{n}{oldPhi}\PYG{p}{))}\PYG{o}{.}\PYG{n}{max}\PYG{p}{()}
+      \PYG{k}{if} \PYG{n}{iter\PYGZus{}no} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{500} \PYG{o+ow}{and} \PYG{n}{errors}\PYG{p}{[}\PYG{n}{iter\PYGZus{}no}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{delta}\PYG{p}{:}
+          \PYG{c+c1}{\PYGZsh{} Running minimum 500 iterations to get a fitting for the error}
+          \PYG{c+c1}{\PYGZsh{} after 500 iterations}
+          \PYG{c+c1}{\PYGZsh{} Exiting the iterations on reaching desired accuracy}
+          \PYG{c+c1}{\PYGZsh{} (i.e) when error goes below the required limit}
+          \PYG{k}{break}
+
+  \PYG{n}{errors} \PYG{o}{=} \PYG{n}{errors}\PYG{p}{[:}\PYG{n}{Ni}\PYG{p}{]}
+  \PYG{k}{return} \PYG{n}{phi}\PYG{p}{,}\PYG{n}{Ni}\PYG{p}{,}\PYG{n}{errors}
+\end{Verbatim}

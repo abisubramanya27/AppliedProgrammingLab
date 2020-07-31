@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{ElectricField\PYGZus{}Centre}\PYG{p}{(}\PYG{n}{phi}\PYG{p}{):}
+  \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+sd}{      Function to calculate Ex and Ey at centre of mesh cells}
+\PYG{l+s+sd}{        (i.e) at (m+0.5,n+0.5)}
+\PYG{l+s+sd}{      Takes in \PYGZhy{}}
+\PYG{l+s+sd}{          phi : The potential grid}
+\PYG{l+s+sd}{      \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{      Returns \PYGZhy{}}
+\PYG{l+s+sd}{          Ex\PYGZus{}centre : Ex at centre of mesh cells}
+\PYG{l+s+sd}{          Ey\PYGZus{}centre : Ey at centre of mesh cells}
+\PYG{l+s+sd}{  \PYGZsq{}\PYGZsq{}\PYGZsq{}}
+  \PYG{c+c1}{\PYGZsh{} Getting Ex and Ey}
+  \PYG{n}{Ex}\PYG{p}{,}\PYG{n}{Ey} \PYG{o}{=} \PYG{n}{ElectricField}\PYG{p}{(}\PYG{n}{phi}\PYG{p}{)}
+
+  \PYG{c+c1}{\PYGZsh{} Ex[m,n+1] finds Ex at (m,n+0.5). Ex at (m+0.5,n+0.5) would be}
+  \PYG{c+c1}{\PYGZsh{}   \PYGZhy{}(phi @ (m+0.5,n+1) \PYGZhy{} phi @ (m+0.5,n)) / dist}
+  \PYG{c+c1}{\PYGZsh{} Since we don\PYGZsq{}t know phi @ (m+0.5,n), we can approximate that as}
+  \PYG{c+c1}{\PYGZsh{}   average of phi @ (m,n) and phi @ (m+1,n)}
+  \PYG{c+c1}{\PYGZsh{} Similarly for phi @ (m+0.5,n+1)}
+  \PYG{c+c1}{\PYGZsh{} On rearranging the terms, we get Ex\PYGZus{}centre[m+1,n+1] as}
+  \PYG{c+c1}{\PYGZsh{}   average of Ex[m+1,n+1] and Ex[m,n+1], which will be Ex at (m+0.5,n+0.5)}
+  \PYG{n}{Ex\PYGZus{}centre} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{))}
+  \PYG{n}{Ex\PYGZus{}centre}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:]} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Ex}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:]} \PYG{o}{+} \PYG{n}{Ex}\PYG{p}{[:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:])}
+
+  \PYG{c+c1}{\PYGZsh{} Similarly Ey\PYGZus{}centre[m+1,n+1] is average of}
+  \PYG{c+c1}{\PYGZsh{}   Ey[m+1,n+1] and Ey[m+1,n], which will be Ey at (m+0.5,n+0.5)}
+  \PYG{n}{Ey\PYGZus{}centre} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{))}
+  \PYG{n}{Ey\PYGZus{}centre}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:]} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Ey}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:]} \PYG{o}{+} \PYG{n}{Ey}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
+
+  \PYG{k}{return} \PYG{n}{Ex\PYGZus{}centre}\PYG{p}{,}\PYG{n}{Ey\PYGZus{}centre}
+\end{Verbatim}

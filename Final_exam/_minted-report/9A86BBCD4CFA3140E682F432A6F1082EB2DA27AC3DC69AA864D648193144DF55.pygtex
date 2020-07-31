@@ -1,0 +1,65 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{ElectricField}\PYG{p}{(}\PYG{n}{phi}\PYG{p}{):}
+  \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+sd}{      Function to calculate electric field along x and y directions}
+\PYG{l+s+sd}{        using one sided derivative}
+\PYG{l+s+sd}{      Takes in \PYGZhy{}}
+\PYG{l+s+sd}{          phi : The potential grid}
+\PYG{l+s+sd}{      \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{      Returns \PYGZhy{}}
+\PYG{l+s+sd}{          Ex : Electric field along x direction \PYGZob{}Ex[m,n] for points (m,n\PYGZhy{}0.5)}
+\PYG{l+s+sd}{            \PYGZhy{} since one sided derivative used\PYGZcb{}}
+\PYG{l+s+sd}{          Ey : Electric field along y direction \PYGZob{}Ey[m,n] for points (m\PYGZhy{}0.5,n)}
+\PYG{l+s+sd}{            \PYGZhy{} since one sided derivative used\PYGZcb{}}
+\PYG{l+s+sd}{  \PYGZsq{}\PYGZsq{}\PYGZsq{}}
+  \PYG{k}{global} \PYG{n}{dist}
+  \PYG{n}{Ex} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{))}
+  \PYG{n}{Ey} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{))}
+
+  \PYG{c+c1}{\PYGZsh{} Electric field is calculated as numerical one\PYGZhy{}sided derivative of potential}
+  \PYG{c+c1}{\PYGZsh{} along respective directions}
+  \PYG{c+c1}{\PYGZsh{} Ex[i,j+1] = \PYGZhy{}(phi[i,j+1] \PYGZhy{} phi[i,j]) / dist}
+  \PYG{c+c1}{\PYGZsh{} and Ey[i+1,j] = \PYGZhy{}(phi[i+1,j] \PYGZhy{} phi[i,j]) / dist}
+  \PYG{c+c1}{\PYGZsh{} where dist = delta x = delta y}
+  \PYG{n}{Ex}\PYG{p}{[:,}\PYG{l+m+mi}{1}\PYG{p}{:]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{phi}\PYG{p}{[:,}\PYG{l+m+mi}{1}\PYG{p}{:]} \PYG{o}{\PYGZhy{}} \PYG{n}{phi}\PYG{p}{[:,:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{o}{/} \PYG{n}{dist}
+  \PYG{n}{Ey}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,:]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{phi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,:]} \PYG{o}{\PYGZhy{}} \PYG{n}{phi}\PYG{p}{[:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,:])} \PYG{o}{/} \PYG{n}{dist}
+
+  \PYG{k}{return} \PYG{n}{Ex}\PYG{p}{,}\PYG{n}{Ey}
+
+
+\PYG{k}{def} \PYG{n+nf}{Charge\PYGZus{}Top\PYGZus{}Fluid}\PYG{p}{(}\PYG{n}{Ex}\PYG{p}{,}\PYG{n}{Ey}\PYG{p}{):}
+  \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+sd}{      Function to caclulate Qtop and Qfluid}
+\PYG{l+s+sd}{      Takes in \PYGZhy{}}
+\PYG{l+s+sd}{          Ex : Electric field along x direction at (m,n+0.5)}
+\PYG{l+s+sd}{          Ey : Electric field along y direction at (m+0.5,n)}
+\PYG{l+s+sd}{      \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{      Returns \PYGZhy{}}
+\PYG{l+s+sd}{          Qtop : Charge at the top surface}
+\PYG{l+s+sd}{          Qfluid : Charge at the surfaces in contact with the fluid}
+\PYG{l+s+sd}{  \PYGZsq{}\PYGZsq{}\PYGZsq{}}
+  \PYG{c+c1}{\PYGZsh{} En\PYGZus{}top is normal electric field (along +y direction \PYGZhy{} outward normal)}
+  \PYG{c+c1}{\PYGZsh{} at the top surface (i.e) (M\PYGZhy{}0.5,n)}
+  \PYG{n}{En\PYGZus{}top} \PYG{o}{=} \PYG{n}{Ey}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,:]}
+  \PYG{c+c1}{\PYGZsh{} En\PYGZus{}lside is normal electric field (along \PYGZhy{}x direction \PYGZhy{} outward normal)}
+  \PYG{c+c1}{\PYGZsh{} at the left side till fluid is present (i.e) (m,0.5)}
+  \PYG{n}{En\PYGZus{}lside} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{Ex}\PYG{p}{[:}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}
+  \PYG{c+c1}{\PYGZsh{} En\PYGZus{}rside is normal electric field (along +x direction \PYGZhy{} outward normal)}
+  \PYG{c+c1}{\PYGZsh{} at the right side till fluid is present (i.e) (m,N\PYGZhy{}0.5)}
+  \PYG{n}{En\PYGZus{}rside} \PYG{o}{=} \PYG{n}{Ex}\PYG{p}{[:}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+  \PYG{c+c1}{\PYGZsh{} En\PYGZus{}bottom is normal electric field (along \PYGZhy{}y direction \PYGZhy{} outward normal)}
+  \PYG{c+c1}{\PYGZsh{} at the bottom surface (i.e) (0.5,n)}
+  \PYG{n}{En\PYGZus{}bottom} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{Ey}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,:]}
+
+  \PYG{k}{global} \PYG{n}{e\PYGZus{}o}\PYG{p}{,}\PYG{n}{e\PYGZus{}r}\PYG{p}{,}\PYG{n}{dist}
+
+  \PYG{c+c1}{\PYGZsh{} Qtop consists of only the top wall}
+  \PYG{n}{Qtop} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{e\PYGZus{}o} \PYG{o}{*} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{En\PYGZus{}top}\PYG{p}{)} \PYG{o}{*} \PYG{n}{dist}
+  \PYG{c+c1}{\PYGZsh{} dist is constant over summation hence brought out}
+
+  \PYG{c+c1}{\PYGZsh{} Qfluid consists of the side walls till height h and the bottom wall}
+  \PYG{n}{Qfluid} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{e\PYGZus{}o}\PYG{o}{*}\PYG{n}{e\PYGZus{}r} \PYG{o}{*} \PYG{p}{(}\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{En\PYGZus{}lside}\PYG{p}{)} \PYG{o}{+} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{En\PYGZus{}rside}\PYG{p}{)} \PYG{o}{+} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{En\PYGZus{}bottom}\PYG{p}{))} \PYG{o}{*} \PYG{n}{dist}
+  \PYG{c+c1}{\PYGZsh{} dist is constant over summation hence brought out}
+
+  \PYG{k}{return} \PYG{n}{Qtop}\PYG{p}{,}\PYG{n}{Qfluid}
+\end{Verbatim}

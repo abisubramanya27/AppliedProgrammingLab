@@ -1,0 +1,68 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} x and y are the axes of the grid to make the contour plot}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Lx}\PYG{p}{,}\PYG{n}{N}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{100}  \PYG{c+c1}{\PYGZsh{} in cm}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Ly}\PYG{p}{,}\PYG{n}{M}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{100}  \PYG{c+c1}{\PYGZsh{} in cm}
+
+\PYG{c+c1}{\PYGZsh{} Qtop is the charge on the top plate}
+\PYG{n}{Qtop} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} Qfluid is the charge on the walls of tank in contact with the fluid}
+\PYG{n}{Qfluid} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{p}{)}
+
+\PYG{k}{for} \PYG{n}{ind}\PYG{p}{,}\PYG{n}{hbyLy} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{([}\PYG{n}{x}\PYG{o}{*}\PYG{l+m+mf}{0.1} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)]):}
+    \PYG{c+c1}{\PYGZsh{} h/Ly = k/(M\PYGZhy{}1) but k and M are integers =\PYGZgt{} (h*(M\PYGZhy{}1)/Ly) should be an integer}
+    \PYG{n}{k} \PYG{o}{=} \PYG{p}{(}\PYG{n}{hbyLy}\PYG{o}{*}\PYG{p}{(}\PYG{n}{M}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))}
+    \PYG{k}{if} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{k} \PYG{o}{\PYGZhy{}} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{k}\PYG{p}{))} \PYG{o}{\PYGZgt{}} \PYG{n}{EPS}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{} k is not an integer}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{For the given value of M and h, }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s2}{          there doesn\PYGZsq{}t exist an index corresponding to the fluid top boundary\PYGZdq{}}\PYG{p}{)}
+        \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{()}
+    \PYG{n}{k} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}
+    \PYG{n}{phi}\PYG{p}{,}\PYG{n}{Ni}\PYG{p}{,}\PYG{n}{errors} \PYG{o}{=} \PYG{n}{solveLaplace}\PYG{p}{(}\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{,}\PYG{n}{dist}\PYG{p}{,}\PYG{n}{k}\PYG{p}{,}\PYG{n}{delta}\PYG{p}{,}\PYG{n}{NIter\PYGZus{}max}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} Fitting an exponential to the error obtained during each iteration}
+    \PYG{c+c1}{\PYGZsh{} Obtaining A and B by using lstsq on log(y) = log(A) + B.x,}
+    \PYG{c+c1}{\PYGZsh{} where y is error and x is the iteration number}
+    \PYG{n}{A}\PYG{p}{,}\PYG{n}{B} \PYG{o}{=} \PYG{n}{lstsq}\PYG{p}{(}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{c\PYGZus{}}\PYG{p}{[}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n}{Ni}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{499}\PYG{p}{),}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{,}\PYG{n}{Ni}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)],}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{errors}\PYG{p}{[}\PYG{l+m+mi}{499}\PYG{p}{:]))[}\PYG{l+m+mi}{0}\PYG{p}{]}
+    \PYG{n}{A} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{The values of A and B for which Ae\PYGZca{}(Bk) fits the  }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{      iteration error vector (for h/Ly = }\PYG{l+s+si}{\PYGZob{}:.1f\PYGZcb{}}\PYG{l+s+s1}{):\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{hbyLy}\PYG{p}{))}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{B}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The maximum error on extrapolating the error to infinity }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{      (for h/Ly = }\PYG{l+s+si}{\PYGZob{}:.1f\PYGZcb{}}\PYG{l+s+s1}{):\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{hbyLy}\PYG{p}{))}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{A}\PYG{o}{/}\PYG{n}{B} \PYG{o}{*} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{B}\PYG{o}{*}\PYG{p}{(}\PYG{n}{Ni}\PYG{o}{+}\PYG{l+m+mf}{0.5}\PYG{p}{)))}
+    \PYG{c+c1}{\PYGZsh{} The exponential which fits the iteration error}
+    \PYG{n}{error\PYGZus{}fit} \PYG{o}{=} \PYG{n}{A} \PYG{o}{*} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{B}\PYG{o}{*}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{,}\PYG{n}{Ni}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))}
+
+    \PYG{c+c1}{\PYGZsh{} Uncomment the below lines to view the potential contour plots}
+    \PYG{c+c1}{\PYGZsh{} and semilog plot of error with the extrapolation}
+    \PYG{c+c1}{\PYGZsh{} PLOT(pl.arange(1,Ni+1),errors,r\PYGZsq{}\PYGZdl{}Number\PYGZbs{} of\PYGZbs{} iterations\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}
+      \PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}Error\PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{semilogy}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}b\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}Log\PYGZbs{} (error)\PYGZbs{} vs\PYGZbs{} Iteration}\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{      number\PYGZbs{} for\PYGZbs{} h/L\PYGZus{}y\PYGZbs{} =\PYGZbs{} }\PYG{l+s+si}{\PYGZob{}:.1f\PYGZcb{}}\PYG{l+s+s1}{\PYGZdl{}\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{hbyLy}\PYG{p}{),}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{k+kc}{True}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}True iteration error\PYGZsq{}}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} \PYGZsh{}pl.semilogy(pl.arange(500,Ni+1),error\PYGZus{}fit,\PYGZsq{}g\PYGZhy{}\PYGZsq{},label = \PYGZsq{}Fitted error\PYGZsq{})}
+    \PYG{c+c1}{\PYGZsh{} pl.legend()}
+    \PYG{c+c1}{\PYGZsh{} pl.show()}
+    \PYG{c+c1}{\PYGZsh{} PLOT(x,y,r\PYGZsq{}\PYGZdl{}X\PYGZbs{} (in\PYGZbs{} cm)\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{},r\PYGZsq{}\PYGZdl{}Y\PYGZbs{} (in\PYGZbs{} cm)\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{},}
+      \PYG{n}{pl}\PYG{o}{.}\PYG{n}{contourf}\PYG{p}{,}\PYG{n}{phi}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}Contour\PYGZbs{} plot\PYGZbs{} of\PYGZbs{} Potential\PYGZbs{} for\PYGZbs{} h/L\PYGZus{}y\PYGZbs{} =}\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{      }\PYG{l+s+si}{\PYGZob{}:.1f\PYGZcb{}}\PYG{l+s+s1}{\PYGZdl{}\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{hbyLy}\PYG{p}{),}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{cmap} \PYG{o}{=} \PYG{n}{matplotlib}\PYG{o}{.}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{plasma}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} pl.show()}
+
+    \PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+sd}{        Since the walls of the tank are all made of conductors, we can use}
+\PYG{l+s+sd}{          the fact that \PYGZhy{}D.n = sigma}
+\PYG{l+s+sd}{        where n \PYGZhy{} the outward normal to the wall at a point and sigma \PYGZhy{}}
+\PYG{l+s+sd}{          the charge density (charge/unit area) at that point}
+
+\PYG{l+s+sd}{        Hence we can sum the sigma multiplied by dist (numerically equal}
+\PYG{l+s+sd}{          to the small length over which sigma is the charge density)}
+\PYG{l+s+sd}{          at each point to get charge per unit depth of the tank}
+\PYG{l+s+sd}{        Q = charge over unit depth (depth of tank (Lz) is unknown and constant}
+\PYG{l+s+sd}{          so we can assume it is unity(1 metre) )}
+\PYG{l+s+sd}{    \PYGZsq{}\PYGZsq{}\PYGZsq{}}
+    \PYG{c+c1}{\PYGZsh{} D.n can be calculated as \PYGZhy{}e dV/dn where e is absolute permittivity}
+    \PYG{c+c1}{\PYGZsh{} of medium = e\PYGZus{}o * e\PYGZus{}r, dV/dn is derivative of potential along}
+    \PYG{c+c1}{\PYGZsh{} outward normal direction}
+    \PYG{c+c1}{\PYGZsh{} We use numerical approximation on derivative =\PYGZgt{} dv = V[i+1] \PYGZhy{} V[i]}
+    \PYG{c+c1}{\PYGZsh{} and dn = dist = delta x = delta y}
+
+    \PYG{n}{Ex}\PYG{p}{,}\PYG{n}{Ey} \PYG{o}{=} \PYG{n}{ElectricField}\PYG{p}{(}\PYG{n}{phi}\PYG{p}{)}
+    \PYG{n}{Qtop}\PYG{p}{[}\PYG{n}{ind}\PYG{p}{],}\PYG{n}{Qfluid}\PYG{p}{[}\PYG{n}{ind}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Charge\PYGZus{}Top\PYGZus{}Fluid}\PYG{p}{(}\PYG{n}{Ex}\PYG{p}{,}\PYG{n}{Ey}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+sd}{  Lx : 10 cm \PYGZhy{} Physical length of tank along x direction}
+\PYG{l+s+sd}{  Ly : 20 cm \PYGZhy{} Physical length of tank along y direction}
+\PYG{l+s+sd}{  e\PYGZus{}r : 2 \PYGZhy{} Relative permttivity of fluid in tank}
+\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{n}{Lx}\PYG{p}{,}\PYG{n}{Ly}\PYG{p}{,}\PYG{n}{e\PYGZus{}r} \PYG{o}{=} \PYG{l+m+mf}{0.1}\PYG{p}{,} \PYG{l+m+mf}{0.2}\PYG{p}{,} \PYG{l+m+mf}{2.0}  \PYG{c+c1}{\PYGZsh{} Lx, Ly in metres}
+
+\PYG{c+c1}{\PYGZsh{} Checking if distance between a node is same along x and along y}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{Ly} \PYG{o}{/} \PYG{p}{(}\PYG{n}{M}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))} \PYG{o}{!=} \PYG{p}{(}\PYG{n}{Lx} \PYG{o}{/} \PYG{p}{(}\PYG{n}{N}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)):}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{Make sure ditance between nodes along x and along y }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{      are equal for given M and N\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} Distance between nodes (same along x and along y) in metres}
+\PYG{n}{dist} \PYG{o}{=} \PYG{n}{Ly} \PYG{o}{/} \PYG{p}{(}\PYG{n}{M}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{n}{EPS} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}9} \PYG{c+c1}{\PYGZsh{} A constant to compare equal decimals}
+\PYG{c+c1}{\PYGZsh{}   which would differ slightly due to machine precision}
+\PYG{n}{e\PYGZus{}o} \PYG{o}{=} \PYG{l+m+mf}{8.854e\PYGZhy{}12} \PYG{c+c1}{\PYGZsh{} Absolute Pe\PYGZus{}rmittivity of free space \PYGZhy{} constant}
+\end{Verbatim}

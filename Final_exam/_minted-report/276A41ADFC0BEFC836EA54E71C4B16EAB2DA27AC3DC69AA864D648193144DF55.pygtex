@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Checking continuity of Dn at m = k}
+\PYG{c+c1}{\PYGZsh{} Dn = e * En, where e = absolute permittivity of medium}
+\PYG{c+c1}{\PYGZsh{}   and En = Ey at the fluid surface m = k}
+\PYG{c+c1}{\PYGZsh{} We are basically checking Dn just above and below are same =\PYGZgt{}}
+\PYG{c+c1}{\PYGZsh{}   (Left hand limit = Right hand limit) =\PYGZgt{} continuity}
+\PYG{c+c1}{\PYGZsh{} I haven\PYGZsq{}t multiplied by e\PYGZus{}o since we are finding}
+\PYG{c+c1}{\PYGZsh{}   relative percentage difference which is a ratio}
+
+\PYG{c+c1}{\PYGZsh{} Ey just above m = k (i,e) (k+0.5,n) =\PYGZgt{} Ey\PYGZus{}centre[k+1,1:]}
+\PYG{c+c1}{\PYGZsh{} Ey just below m = k (i,e) (k\PYGZhy{}0.5,n) =\PYGZgt{} Ey\PYGZus{}centre[k,1:]}
+\PYG{n}{per\PYGZus{}diff} \PYG{o}{=} \PYG{n+nb}{abs}\PYG{p}{((}\PYG{n}{Ey\PYGZus{}centre}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:]}\PYG{o}{\PYGZhy{}}\PYG{n}{e\PYGZus{}r}\PYG{o}{*}\PYG{n}{Ey\PYGZus{}centre}\PYG{p}{[}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:])} \PYG{o}{/}
+  \PYG{n}{Ey\PYGZus{}centre}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:])}\PYG{o}{.}\PYG{n}{max}\PYG{p}{()} \PYG{o}{*} \PYG{l+m+mi}{100}  \PYG{c+c1}{\PYGZsh{} percentage difference}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{The relative difference between Dn }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{  just above and below is nearly : }\PYG{l+s+si}{\PYGZob{}per\PYGZus{}diff\PYGZcb{}}\PYG{l+s+s1}{ \PYGZpc{}\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{if} \PYG{n}{per\PYGZus{}diff} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.1}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Dn is continuous at m = k\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{else} \PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Dn is not continuous at m = k\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

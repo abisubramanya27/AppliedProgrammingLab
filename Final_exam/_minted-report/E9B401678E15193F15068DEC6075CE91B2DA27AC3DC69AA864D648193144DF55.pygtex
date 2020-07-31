@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{} Ex, Ey at (m+0.5,n+0.5) \PYGZhy{} at centre of mesh cells}
+\PYG{n}{Ex\PYGZus{}centre}\PYG{p}{,}\PYG{n}{Ey\PYGZus{}centre} \PYG{o}{=} \PYG{n}{ElectricField\PYGZus{}Centre}\PYG{p}{(}\PYG{n}{phi}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Printing the Ex and Ey at (m+0.5,n+0.5)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s+s1}{Ex values at (m+0.5,n+0.5) :\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{Ex\PYGZus{}centre}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:])}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{Ey values at (m+0.5,n+0.5) :\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{Ey\PYGZus{}centre}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:])}
+
+\PYG{c+c1}{\PYGZsh{} x and y are the axes of the grid to make the quiver plot \PYGZhy{}}
+\PYG{c+c1}{\PYGZsh{}   coordinates of midpoint of the mesh cells}
+\PYG{n}{x\PYGZus{}c} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{n}{dist}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{Lx}\PYG{p}{,}\PYG{n}{dist}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{100}  \PYG{c+c1}{\PYGZsh{} in cm}
+\PYG{n}{y\PYGZus{}c} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{n}{dist}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{Ly}\PYG{p}{,}\PYG{n}{dist}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{100}  \PYG{c+c1}{\PYGZsh{} in cm}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{quiver}\PYG{p}{(}\PYG{n}{x\PYGZus{}c}\PYG{p}{,}\PYG{n}{y\PYGZus{}c}\PYG{p}{,}\PYG{n}{Ex\PYGZus{}centre}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:],}\PYG{n}{Ey}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:])}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}X\PYGZbs{} (in\PYGZbs{} cm)\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{15}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}Y\PYGZbs{} (in\PYGZbs{} cm)\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{15}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Electric field at centre of mesh cells\PYGZsq{}}\PYG{p}{,}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

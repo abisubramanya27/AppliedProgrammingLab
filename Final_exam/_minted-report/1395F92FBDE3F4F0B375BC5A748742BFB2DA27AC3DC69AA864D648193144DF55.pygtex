@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZhy{}M\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}M\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{int}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mi}{41}\PYG{p}{,}
+  \PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}The number of nodes along y, including the boundary nodes (\PYGZgt{}= 2)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZhy{}N\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}N\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{int}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mi}{21}\PYG{p}{,}
+  \PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}The number of nodes along x, including the boundary nodes) (\PYGZgt{}= 2)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZhy{}delta\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}delta\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{float}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mf}{1e\PYGZhy{}8}\PYG{p}{,}
+  \PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}The desired accuracy for the potential obtained\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZhy{}Ni\PYGZsq{}}\PYG{p}{,}\PYG{n}{dest}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}NIter\PYGZus{}max\PYGZsq{}}\PYG{p}{,}\PYG{n+nb}{type}\PYG{o}{=}\PYG{n+nb}{int}\PYG{p}{,}\PYG{n}{default}\PYG{o}{=}\PYG{l+m+mi}{3000}\PYG{p}{,}
+  \PYG{n}{help} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}The maximum number of iterations to complete for convergence\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{args} \PYG{o}{=} \PYG{n}{parser}\PYG{o}{.}\PYG{n}{parse\PYGZus{}args}\PYG{p}{()}
+\PYG{n}{M}\PYG{p}{,}\PYG{n}{N}\PYG{p}{,}\PYG{n}{delta}\PYG{p}{,}\PYG{n}{NIter\PYGZus{}max} \PYG{o}{=} \PYG{n}{args}\PYG{o}{.}\PYG{n}{M}\PYG{p}{,}\PYG{n}{args}\PYG{o}{.}\PYG{n}{N}\PYG{p}{,}\PYG{n}{args}\PYG{o}{.}\PYG{n}{delta}\PYG{p}{,}\PYG{n}{args}\PYG{o}{.}\PYG{n}{NIter\PYGZus{}max}
+\end{Verbatim}

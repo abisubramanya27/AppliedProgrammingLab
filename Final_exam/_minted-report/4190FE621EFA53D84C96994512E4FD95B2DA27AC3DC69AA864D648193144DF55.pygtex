@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Leaving the constants behind since we are considering the ratio only}
+\PYG{n}{ratio} \PYG{o}{=}  \PYG{p}{(}\PYG{n}{e\PYGZus{}r}\PYG{o}{**}\PYG{l+m+mf}{0.5} \PYG{o}{*} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{angle\PYGZus{}b}\PYG{p}{))} \PYG{o}{/} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{angle\PYGZus{}t}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} n1.sin(Theta1) / n2.sin(Theta2)}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{x\PYGZus{}c}\PYG{p}{,}\PYG{n}{ratio}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}X\PYGZbs{} (in\PYGZbs{} cm)\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}
+  \PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}\PYGZbs{}frac\PYGZob{}n\PYGZus{}1sin(\PYGZbs{}theta\PYGZus{}1)\PYGZcb{}\PYGZob{}n\PYGZus{}2sin(\PYGZbs{}theta\PYGZus{}2)\PYGZcb{}\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{,}
+  \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}o\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}Snell\PYGZsq{}s law validity\PYGZdq{}}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\PYG{n}{mean\PYGZus{}ratio} \PYG{o}{=} \PYG{n}{ratio}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{()}
+\PYG{n}{std\PYGZus{}ratio} \PYG{o}{=} \PYG{n}{ratio}\PYG{o}{.}\PYG{n}{std}\PYG{p}{()}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{The value of n1*sin(Theta1) / n2*sin(Theta2) has }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{  mean : }\PYG{l+s+si}{\PYGZob{}mean\PYGZus{}ratio\PYGZcb{}}\PYG{l+s+s1}{ and standard deviation : }\PYG{l+s+si}{\PYGZob{}std\PYGZus{}ratio\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} The ratio has to be closer to 1 at all points for snell\PYGZsq{}s law to be valid,}
+\PYG{c+c1}{\PYGZsh{}   hence standard deviation of the ratio too has to be small apart from}
+\PYG{c+c1}{\PYGZsh{}   mean of the ratio being near to 1}
+\PYG{k}{if} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{mean\PYGZus{}ratio}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.0}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.1} \PYG{o+ow}{and} \PYG{n}{std\PYGZus{}ratio} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.2}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Snell\PYGZsq{}s law is followed\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{else} \PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Snell\PYGZsq{}s law is not followed\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

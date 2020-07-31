@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{iter\PYGZus{}no} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{Ni\PYGZus{}max}\PYG{p}{):}
+      \PYG{n}{Ni} \PYG{o}{+=} \PYG{l+m+mi}{1}
+      \PYG{n}{oldPhi} \PYG{o}{=} \PYG{n}{phi}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+      \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{} Using vectorised code to execute code faster \PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+      \PYG{c+c1}{\PYGZsh{} Interior Points from 0 to (k\PYGZhy{}1)th index \PYGZhy{} average of surrounding points}
+      \PYG{n}{phi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.25} \PYG{o}{*} \PYG{p}{(}\PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+}
+        \PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{:}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{:])}
+      \PYG{c+c1}{\PYGZsh{} Interior Points from (k+1)th to Nth index \PYGZhy{} average of surrounding points}
+      \PYG{n}{phi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.25} \PYG{o}{*} \PYG{p}{(}\PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{:,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+}
+        \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{:])}
+      \PYG{c+c1}{\PYGZsh{} Interior Points at kth index \PYGZhy{} slightly different updation}
+      \PYG{c+c1}{\PYGZsh{} to handle Dn continuity}
+      \PYG{k}{global} \PYG{n}{e\PYGZus{}r}
+      \PYG{n}{phi}\PYG{p}{[}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{e\PYGZus{}r}\PYG{o}{*}\PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{oldPhi}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{e\PYGZus{}r}\PYG{p}{)}
+
+      \PYG{c+c1}{\PYGZsh{} The top, bottom and side boundaries are at constant potentials}
+      \PYG{c+c1}{\PYGZsh{} as initialised and unaffected by above update}
+      \PYG{c+c1}{\PYGZsh{} Hence not running below code and increase the time taken}
+      \PYG{c+c1}{\PYGZsh{} phi[0,:] = 0  \PYGZsh{} Bottom side}
+      \PYG{c+c1}{\PYGZsh{} phi[:,0] = 0  \PYGZsh{} Left side}
+      \PYG{c+c1}{\PYGZsh{} phi[:,\PYGZhy{}1] = 0  \PYGZsh{}Right side}
+      \PYG{c+c1}{\PYGZsh{} phi[\PYGZhy{}1,1:\PYGZhy{}1] = 1  \PYGZsh{} Top side}
+\end{Verbatim}

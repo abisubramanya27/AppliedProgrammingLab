@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Using Ex\PYGZus{}centre and Ey\PYGZus{}centre from above part which calculated}
+\PYG{c+c1}{\PYGZsh{}   Electric fields along x and y axes at centre of mesh cells}
+\PYG{c+c1}{\PYGZsh{} Angle made by electric field with normal (y\PYGZhy{}axis) at points}
+\PYG{c+c1}{\PYGZsh{}   just below m = k (i.e) (k\PYGZhy{}0.5,n) \PYGZhy{} Theta1}
+\PYG{n}{angle\PYGZus{}b} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{arctan}\PYG{p}{(}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{divide}\PYG{p}{(}\PYG{n}{Ex\PYGZus{}centre}\PYG{p}{[}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:],}\PYG{n}{Ey\PYGZus{}centre}\PYG{p}{[}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:]))}
+\PYG{c+c1}{\PYGZsh{} Angle made by electric field with normal (y\PYGZhy{}axis) at points}
+\PYG{c+c1}{\PYGZsh{}   just above m = k (i.e) (k+0.5,n) \PYGZhy{} Theta2}
+\PYG{n}{angle\PYGZus{}t} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{arctan}\PYG{p}{(}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{divide}\PYG{p}{(}\PYG{n}{Ex\PYGZus{}centre}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:],}\PYG{n}{Ey\PYGZus{}centre}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{:]))}
+
+\PYG{c+c1}{\PYGZsh{} Plot of change in angle of electric field (i.e) angle\PYGZus{}t \PYGZhy{} angle\PYGZus{}b}
+\PYG{n}{PLOT}\PYG{p}{(}\PYG{n}{x\PYGZus{}c}\PYG{p}{,}\PYG{n}{angle\PYGZus{}t}\PYG{o}{\PYGZhy{}}\PYG{n}{angle\PYGZus{}b}\PYG{p}{,}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}X\PYGZbs{} (in\PYGZbs{} cm)\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}
+  \PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}Change\PYGZbs{} in\PYGZbs{} angle\PYGZbs{} (in\PYGZbs{} radians)\PYGZbs{} \PYGZbs{}rightarrow\PYGZdl{}\PYGZsq{}}\PYG{p}{,}\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}o\PYGZsq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}Change in angle of Electric Field at m = k\PYGZdq{}}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{} Uncomment the below line to print the change in angle of Electric field}
+\PYG{c+c1}{\PYGZsh{} print(angle\PYGZus{}t\PYGZhy{}angle\PYGZus{}b)}
+\end{Verbatim}
